@@ -99,7 +99,17 @@
     getline(cin, port_str);
     my_port = stoi(port_str);
 
-    // Establish persistent connection to server at startup
+    // ============================================================================
+    // IMPORTANT: Establish persistent connection to server at startup
+    // ============================================================================
+    // The new architecture establishes ONE persistent connection when program starts.
+    // All operations (Register, Login, List, Transfer, Exit) will use this SAME connection.
+    // This matches the server's expectation of a persistent connection model.
+    //
+    // 重要：在程式啟動時建立持久連線
+    // 新架構在程式啟動時就建立「一個」持久連線，所有操作（註冊、登入、查詢、轉帳、
+    // 離線）都會使用「同一個」連線。這符合 Server 端期望的持久連線模式。
+    // ============================================================================
     cout << "\nConnecting to server..." << endl;
     server_socket = connect_to_server(server_ip, server_port);
     if (server_socket == -1) {
@@ -168,12 +178,24 @@
      cout << "========================================" << endl;
  }
  
- /*
-  * Handle Registration
-  * Registers a new user with the server using a temporary connection.
-  * Protocol: REGISTER#<username>\r\n
-  * Response: 100 OK\r\n (success) or 210 FAIL\r\n (failure)
-  */
+/*
+ * Handle Registration
+ * ==================================================================================
+ * IMPORTANT: Now uses persistent connection (changed from temporary connection)
+ * ==================================================================================
+ * Registers a new user with the server using the EXISTING persistent connection.
+ * Previously, this function created a temporary connection and closed it after use,
+ * but this caused server-side issues. Now it uses the persistent server_socket
+ * established at program startup, just like Login, List, and other operations.
+ *
+ * Protocol: REGISTER#<username>\r\n
+ * Response: 100 OK\r\n (success) or 210 FAIL\r\n (failure)
+ *
+ * 重要：現在使用持久連線（從臨時連線改變而來）
+ * 使用程式啟動時建立的「現有持久連線」來註冊新使用者。先前此函數會建立臨時連線
+ * 並在使用後關閉，但這會導致 Server 端問題。現在它使用與 Login、List 等操作相同
+ * 的持久連線 server_socket。
+ */
 void handle_register() {
     cout << "\n--- Register ---" << endl;
     
@@ -194,6 +216,8 @@ void handle_register() {
     getline(cin, user);
 
     // Send registration message using persistent connection: REGISTER#username\r\n
+    // Unlike the old implementation, we do NOT create a temporary socket here
+    // 使用持久連線發送註冊訊息，不像舊版本會建立臨時 socket
     string message = "REGISTER#" + user + CRLF;
     
     if (!send_message(server_socket, message)) {
