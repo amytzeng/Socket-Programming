@@ -727,14 +727,20 @@ string receive_message(int sock) {
      // Receive transfer message from peer
      string message = receive_message(client_sock);
      
+     safe_print("[DEBUG] Received P2P message: '" + message + "'");
+     safe_print("[DEBUG] Message length: " + to_string(message.length()) + " bytes");
+     
      if (message.empty()) {
+         safe_print("[ERROR] Empty P2P message received");
          close(client_sock);
          return;
      }
- 
+
      // Parse transfer message: sender#amount#recipient
      size_t pos1 = message.find('#');
      size_t pos2 = message.find('#', pos1 + 1);
+     
+     safe_print("[DEBUG] pos1=" + to_string(pos1) + ", pos2=" + to_string(pos2));
      
      if (pos1 != string::npos && pos2 != string::npos) {
          string sender = message.substr(0, pos1);
@@ -744,6 +750,8 @@ string receive_message(int sock) {
         // Remove CRLF from recipient field
         recipient.erase(std::remove(recipient.begin(), recipient.end(), '\r'), recipient.end());
         recipient.erase(std::remove(recipient.begin(), recipient.end(), '\n'), recipient.end());
+        
+        safe_print("[DEBUG] Parsed P2P: sender='" + sender + "', amount='" + amount_str + "', recipient='" + recipient + "'");
          
          int amount = stoi(amount_str);
          
@@ -799,6 +807,9 @@ string receive_message(int sock) {
          } else {
              safe_print("Warning: Not logged in, transaction not reported to server");
          }
+     } else {
+         safe_print("[ERROR] Failed to parse P2P transfer message. Invalid format.");
+         safe_print("[ERROR] pos1=" + to_string(pos1) + ", pos2=" + to_string(pos2));
      }
      
      // Close P2P connection
