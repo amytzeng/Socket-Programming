@@ -8,16 +8,17 @@
  * - Multi-threaded design allows simultaneous operations
  */
 
- #include <iostream>
- #include <string>
- #include <cstring>
- #include <vector>
- #include <map>
- #include <thread>
- #include <mutex>
- #include <chrono>
- #include <sstream>
- #include <sys/socket.h>
+#include <iostream>
+#include <string>
+#include <cstring>
+#include <algorithm>
+#include <vector>
+#include <map>
+#include <thread>
+#include <mutex>
+#include <chrono>
+#include <sstream>
+#include <sys/socket.h>
  #include <netinet/in.h>
  #include <arpa/inet.h>
  #include <unistd.h>
@@ -534,19 +535,19 @@
      istringstream iss(response);
      string line;
      
-     // First line: account balance
-     if (getline(iss, line)) {
-         // Remove any CR/LF characters
-         line.erase(remove(line.begin(), line.end(), '\r'), line.end());
-         line.erase(remove(line.begin(), line.end(), '\n'), line.end());
+    // First line: account balance
+    if (getline(iss, line)) {
+        // Remove any CR/LF characters
+        line.erase(std::remove(line.begin(), line.end(), '\r'), line.end());
+        line.erase(std::remove(line.begin(), line.end(), '\n'), line.end());
          account_balance = stoi(line);
          cout << "Account Balance: $" << account_balance << endl;
      }
      
-     // Second line: server public key
-     if (getline(iss, line)) {
-         line.erase(remove(line.begin(), line.end(), '\r'), line.end());
-         line.erase(remove(line.begin(), line.end(), '\n'), line.end());
+    // Second line: server public key
+    if (getline(iss, line)) {
+        line.erase(std::remove(line.begin(), line.end(), '\r'), line.end());
+        line.erase(std::remove(line.begin(), line.end(), '\n'), line.end());
          server_public_key = line;
          // Don't print the full key, just indicate we received it
          if (!server_public_key.empty()) {
@@ -554,11 +555,11 @@
          }
      }
      
-     // Third line: number of online users
-     int num_users = 0;
-     if (getline(iss, line)) {
-         line.erase(remove(line.begin(), line.end(), '\r'), line.end());
-         line.erase(remove(line.begin(), line.end(), '\n'), line.end());
+    // Third line: number of online users
+    int num_users = 0;
+    if (getline(iss, line)) {
+        line.erase(std::remove(line.begin(), line.end(), '\r'), line.end());
+        line.erase(std::remove(line.begin(), line.end(), '\n'), line.end());
          num_users = stoi(line);
          cout << "Number of online users: " << num_users << endl;
      }
@@ -570,10 +571,10 @@
      // Parse each online user's information
      cout << "\nOnline Users:" << endl;
      cout << "----------------------------------------" << endl;
-     for (int i = 0; i < num_users; i++) {
-         if (getline(iss, line)) {
-             line.erase(remove(line.begin(), line.end(), '\r'), line.end());
-             line.erase(remove(line.begin(), line.end(), '\n'), line.end());
+    for (int i = 0; i < num_users; i++) {
+        if (getline(iss, line)) {
+            line.erase(std::remove(line.begin(), line.end(), '\r'), line.end());
+            line.erase(std::remove(line.begin(), line.end(), '\n'), line.end());
              
              // Parse: username#ip#port
              size_t pos1 = line.find('#');
@@ -681,11 +682,11 @@
      if (pos1 != string::npos && pos2 != string::npos) {
          string sender = message.substr(0, pos1);
          string amount_str = message.substr(pos1 + 1, pos2 - pos1 - 1);
-         string recipient = message.substr(pos2 + 1);
-         
-         // Remove CRLF from recipient field
-         recipient.erase(remove(recipient.begin(), recipient.end(), '\r'), recipient.end());
-         recipient.erase(remove(recipient.begin(), recipient.end(), '\n'), recipient.end());
+        string recipient = message.substr(pos2 + 1);
+        
+        // Remove CRLF from recipient field
+        recipient.erase(std::remove(recipient.begin(), recipient.end(), '\r'), recipient.end());
+        recipient.erase(std::remove(recipient.begin(), recipient.end(), '\n'), recipient.end());
          
          int amount = stoi(amount_str);
          
