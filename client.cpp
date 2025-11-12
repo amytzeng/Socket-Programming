@@ -19,80 +19,80 @@
 #include <chrono>
 #include <sstream>
 #include <sys/socket.h>
- #include <netinet/in.h>
- #include <arpa/inet.h>
- #include <unistd.h>
- #include <errno.h>
- 
- using namespace std;
- 
- // Constants
- #define BUFFER_SIZE 4096  // Maximum size for network messages
- #define CRLF "\r\n"       // Carriage Return + Line Feed (protocol requirement)
- 
- // Global variables for network connections
- int server_socket = -1;   // Socket for persistent connection to server
- int listen_socket = -1;   // Socket for listening to P2P connections from other clients
- string username = "";     // Current logged-in username
- string server_ip = "";    // Server's IP address
- int server_port = 0;      // Server's port number
- int my_port = 0;          // Our listening port for P2P connections
- 
- // Global variables for account state
- int account_balance = 10000;        // Current account balance (initialized with default)
- string server_public_key = "";      // Server's public key (for Phase 2)
- bool is_logged_in = false;          // Login status flag
- bool is_running = true;             // Main loop control flag
- 
- // Mutex locks for thread synchronization
- mutex cout_mutex;    // Protects console output from multiple threads
- mutex socket_mutex;  // Protects server_socket from concurrent access
- 
- // Structure to hold online user information
- struct OnlineUser {
-     string username;  // User's account name
-     string ip;        // User's IP address
-     int port;         // User's listening port for P2P connections
- };
- 
- // Map to store all currently online users (username -> OnlineUser)
- map<string, OnlineUser> online_users;
- mutex users_mutex;  // Protects online_users map from concurrent access
- 
- // Function prototypes
- void print_menu();
- void handle_register();
- void handle_login();
- void handle_list();
- void handle_transfer();
- void handle_exit();
- int connect_to_server(const string& ip, int port);
- bool send_message(int sock, const string& message);
- string receive_message(int sock);
- void parse_online_list(const string& response);
- void listener_thread();
- void handle_client_connection(int client_sock);
- void safe_print(const string& message);
- 
- /*
-  * Main Function
-  * Sets up initial configuration, starts P2P listener thread,
-  * and runs the main menu loop for user interaction.
-  */
- int main() {
-     cout << "========================================" << endl;
-     cout << "   P2P Micropayment System - Client    " << endl;
-     cout << "========================================" << endl;
-     cout << endl;
- 
-     // Get server connection information from user
-     cout << "Enter Server IP address: ";
-     getline(cin, server_ip);
-     
-     cout << "Enter Server Port: ";
-     string port_str;
-     getline(cin, port_str);
-     server_port = stoi(port_str);
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <unistd.h>
+#include <errno.h>
+
+using namespace std;
+
+// Constants
+#define BUFFER_SIZE 4096  // Maximum size for network messages
+#define CRLF "\r\n"       // Carriage Return + Line Feed (protocol requirement)
+
+// Global variables for network connections
+int server_socket = -1;   // Socket for persistent connection to server
+int listen_socket = -1;   // Socket for listening to P2P connections from other clients
+string username = "";     // Current logged-in username
+string server_ip = "";    // Server's IP address
+int server_port = 0;      // Server's port number
+int my_port = 0;          // Our listening port for P2P connections
+
+// Global variables for account state
+int account_balance = 10000;        // Current account balance (initialized with default)
+string server_public_key = "";      // Server's public key (for Phase 2)
+bool is_logged_in = false;          // Login status flag
+bool is_running = true;             // Main loop control flag
+
+// Mutex locks for thread synchronization
+mutex cout_mutex;    // Protects console output from multiple threads
+mutex socket_mutex;  // Protects server_socket from concurrent access
+
+// Structure to hold online user information
+struct OnlineUser {
+    string username;  // User's account name
+    string ip;        // User's IP address
+    int port;         // User's listening port for P2P connections
+};
+
+// Map to store all currently online users (username -> OnlineUser)
+map<string, OnlineUser> online_users;
+mutex users_mutex;  // Protects online_users map from concurrent access
+
+// Function prototypes
+void print_menu();
+void handle_register();
+void handle_login();
+void handle_list();
+void handle_transfer();
+void handle_exit();
+int connect_to_server(const string& ip, int port);
+bool send_message(int sock, const string& message);
+string receive_message(int sock);
+void parse_online_list(const string& response);
+void listener_thread();
+void handle_client_connection(int client_sock);
+void safe_print(const string& message);
+
+/*
+* Main Function
+* Sets up initial configuration, starts P2P listener thread,
+* and runs the main menu loop for user interaction.
+*/
+int main() {   
+    cout << "========================================" << endl;
+    cout << "   P2P Micropayment System - Client    " << endl;
+    cout << "========================================" << endl;
+    cout << endl;
+
+    // Get server connection information from user
+    cout << "Enter Server IP address: ";
+    getline(cin, server_ip);
+    
+    cout << "Enter Server Port: ";
+    string port_str;
+    getline(cin, port_str);
+    server_port = stoi(port_str);
  
    // Get our listening port for accepting P2P connections
    cout << "Enter your listening port for P2P connections: ";
@@ -327,14 +327,16 @@ void handle_login() {
          return;
      }
  
-     cout << "\n--- Requesting updated list ---" << endl;
- 
-     // Send list request to server
-     string message = "List" + string(CRLF);
-     if (!send_message(server_socket, message)) {
-         cout << "Failed to send list request." << endl;
-         return;
-     }
+    cout << "\n--- Requesting updated list ---" << endl;
+
+    // Send list request to server
+    // NOTE: Based on working examples, List command does NOT include CRLF
+    // 注意：根據可執行範例，List 命令不包含 CRLF
+    string message = "List";
+    if (!send_message(server_socket, message)) {
+        cout << "Failed to send list request." << endl;
+        return;
+    }
  
     // Receive response from server
     string response = receive_message(server_socket);
@@ -343,11 +345,6 @@ void handle_login() {
         cout << "No response from server." << endl;
         return;
     }
-
-    // DEBUG: Show what we received
-    cout << "\n[DEBUG] Received response:" << endl;
-    cout << "'" << response << "'" << endl;
-    cout << "[DEBUG] Response length: " << response.length() << " bytes" << endl;
 
     // Parse and display updated information
     parse_online_list(response);
@@ -449,9 +446,9 @@ void handle_login() {
      // Wait for recipient to report transaction to server
      this_thread::sleep_for(chrono::milliseconds(500));
      
-     // Request updated balance from server to reflect the transfer
-     cout << "\nRequesting updated balance from server..." << endl;
-     string list_msg = "List" + string(CRLF);
+    // Request updated balance from server to reflect the transfer
+    cout << "\nRequesting updated balance from server..." << endl;
+    string list_msg = "List";
      if (send_message(server_socket, list_msg)) {
          string response = receive_message(server_socket);
          if (!response.empty()) {
@@ -479,7 +476,8 @@ void handle_login() {
         cout << "Logging out..." << endl;
         
         // Send exit message to server
-        string message = "Exit" + string(CRLF);
+        // NOTE: Based on working examples, Exit command does NOT include CRLF
+        string message = "Exit";
         if (send_message(server_socket, message)) {
             // Wait for server's goodbye response
             string response = receive_message(server_socket);
@@ -595,24 +593,14 @@ string receive_message(int sock) {
         // Remove any CR/LF characters
         line.erase(std::remove(line.begin(), line.end(), '\r'), line.end());
         line.erase(std::remove(line.begin(), line.end(), '\n'), line.end());
-        
-        cout << "[DEBUG] Line 1 (balance): '" << line << "'" << endl;
-        
-        if (!line.empty()) {
-            account_balance = stoi(line);
-            cout << "Account Balance: $" << account_balance << endl;
-        } else {
-            cout << "[ERROR] Empty balance line!" << endl;
-        }
+        account_balance = stoi(line);
+        cout << "Account Balance: $" << account_balance << endl;
      }
      
     // Second line: server public key
     if (getline(iss, line)) {
         line.erase(std::remove(line.begin(), line.end(), '\r'), line.end());
         line.erase(std::remove(line.begin(), line.end(), '\n'), line.end());
-        
-        cout << "[DEBUG] Line 2 (public key): '" << line << "'" << endl;
-        
          server_public_key = line;
          // Don't print the full key, just indicate we received it
          if (!server_public_key.empty()) {
@@ -625,15 +613,8 @@ string receive_message(int sock) {
     if (getline(iss, line)) {
         line.erase(std::remove(line.begin(), line.end(), '\r'), line.end());
         line.erase(std::remove(line.begin(), line.end(), '\n'), line.end());
-        
-        cout << "[DEBUG] Line 3 (num_users): '" << line << "'" << endl;
-        
-        if (!line.empty()) {
-            num_users = stoi(line);
-            cout << "Number of online users: " << num_users << endl;
-        } else {
-            cout << "[ERROR] Empty num_users line!" << endl;
-        }
+        num_users = stoi(line);
+        cout << "Number of online users: " << num_users << endl;
      }
      
      // Clear current online users map before updating
@@ -647,8 +628,6 @@ string receive_message(int sock) {
         if (getline(iss, line)) {
             line.erase(std::remove(line.begin(), line.end(), '\r'), line.end());
             line.erase(std::remove(line.begin(), line.end(), '\n'), line.end());
-            
-            cout << "[DEBUG] User line " << (i+1) << ": '" << line << "'" << endl;
              
              // Parse: username#ip#port
              size_t pos1 = line.find('#');
@@ -660,16 +639,10 @@ string receive_message(int sock) {
                  user.ip = line.substr(pos1 + 1, pos2 - pos1 - 1);
                  user.port = stoi(line.substr(pos2 + 1));
                  
-                 cout << "[DEBUG] Parsed: username='" << user.username << "', ip='" << user.ip << "', port=" << user.port << endl;
-                 
                  // Add user to online users map
                  online_users[user.username] = user;
                  cout << user.username << " @ " << user.ip << ":" << user.port << endl;
-             } else {
-                 cout << "[ERROR] Failed to parse user line (pos1=" << pos1 << ", pos2=" << pos2 << ")" << endl;
              }
-         } else {
-             cout << "[ERROR] Could not read user line " << (i+1) << endl;
          }
      }
      cout << "----------------------------------------" << endl;
@@ -785,18 +758,38 @@ string receive_message(int sock) {
          if (is_logged_in && server_socket != -1) {
              socket_mutex.lock();  // Lock because main thread may also use server_socket
              
-             // Send transaction report: TRANSACTION#sender#recipient#amount\r\n
-             string transaction_msg = "TRANSACTION#" + sender + "#" + recipient + "#" + amount_str + CRLF;
-             if (send_message(server_socket, transaction_msg)) {
-                 string response = receive_message(server_socket);
-                 if (!response.empty()) {
-                     safe_print("Server response: " + response);
-                 } else {
-                     safe_print("Warning: No response from server for transaction report");
-                 }
-             } else {
-                 safe_print("Warning: Failed to report transaction to server");
-             }
+            // Send transaction report: TRANSACTION#sender#recipient#amount
+            // NOTE: Like List and Exit, TRANSACTION does not include CRLF
+            string transaction_msg = "TRANSACTION#" + sender + "#" + recipient + "#" + amount_str;
+            
+            if (send_message(server_socket, transaction_msg)) {
+                string response = receive_message(server_socket);
+                if (!response.empty()) {
+                    // Server responds with updated account info (List format)
+                    // Parse it to update our local balance
+                    // Server 回應更新後的帳戶資訊（List 格式）
+                    // 解析它來更新本地餘額
+                    
+                    // Use a stringstream to parse the response
+                    istringstream temp_iss(response);
+                    string temp_line;
+                    
+                    // First line should be the updated balance
+                    if (getline(temp_iss, temp_line)) {
+                        temp_line.erase(std::remove(temp_line.begin(), temp_line.end(), '\r'), temp_line.end());
+                        temp_line.erase(std::remove(temp_line.begin(), temp_line.end(), '\n'), temp_line.end());
+                        
+                        if (!temp_line.empty() && isdigit(temp_line[0])) {
+                            account_balance = stoi(temp_line);
+                            safe_print("Transaction confirmed. Updated balance: $" + to_string(account_balance));
+                        }
+                    }
+                } else {
+                    safe_print("[WARNING] No response from server for transaction report");
+                }
+            } else {
+                safe_print("[WARNING] Failed to report transaction to server");
+            }
              
              socket_mutex.unlock();
          } else {
