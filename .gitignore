@@ -1,0 +1,52 @@
+# Compiled binaries
+client
+test_server
+server
+
+# Object files
+*.o
+*.obj
+
+# Submission packages
+*_part1.tar.gz
+*_part2.tar.gz
+*_part3.tar.gz
+*_part1/
+*_part2/
+*_part3/
+
+# macOS
+.DS_Store
+._*
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Test outputs
+test_output/
+output/
+
+# Keep these
+!README.pdf
+!documentation.pdf
+
