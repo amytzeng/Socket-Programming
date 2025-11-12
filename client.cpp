@@ -94,20 +94,30 @@
      getline(cin, port_str);
      server_port = stoi(port_str);
  
-     // Get our listening port for accepting P2P connections
-     cout << "Enter your listening port for P2P connections: ";
-     getline(cin, port_str);
-     my_port = stoi(port_str);
- 
-     // Start listener thread for P2P connections in background
-     // This thread will accept incoming transfer requests from other clients
-     thread listener(listener_thread);
-     listener.detach();  // Detach so it runs independently
- 
-     // Give listener thread time to initialize and start listening
-     this_thread::sleep_for(chrono::milliseconds(500));
- 
-     // Main menu loop - continues until user chooses to exit
+    // Get our listening port for accepting P2P connections
+    cout << "Enter your listening port for P2P connections: ";
+    getline(cin, port_str);
+    my_port = stoi(port_str);
+
+    // Establish persistent connection to server at startup
+    cout << "\nConnecting to server..." << endl;
+    server_socket = connect_to_server(server_ip, server_port);
+    if (server_socket == -1) {
+        cout << "Failed to connect to server. Exiting." << endl;
+        return 1;
+    }
+    cout << "Connected to server successfully!" << endl;
+    cout << "You can now Register (if new user) or Login (if existing user)." << endl;
+
+    // Start listener thread for P2P connections in background
+    // This thread will accept incoming transfer requests from other clients
+    thread listener(listener_thread);
+    listener.detach();  // Detach so it runs independently
+
+    // Give listener thread time to initialize and start listening
+    this_thread::sleep_for(chrono::milliseconds(500));
+
+    // Main menu loop - continues until user chooses to exit
      while (is_running) {
          print_menu();
          
@@ -164,59 +174,51 @@
   * Protocol: REGISTER#<username>\r\n
   * Response: 100 OK\r\n (success) or 210 FAIL\r\n (failure)
   */
- void handle_register() {
-     cout << "\n--- Register ---" << endl;
-     cout << "Enter username: ";
-     string user;
-     getline(cin, user);
- 
-     // cout << "[DEBUG] Attempting to connect to " << server_ip << ":" << server_port << endl;
- 
-     // Create temporary connection to server for registration
-     int sock = connect_to_server(server_ip, server_port);
-     if (sock == -1) {
-         cout << "Failed to connect to server." << endl;
-         return;
-     }
- 
-     // cout << "[DEBUG] Connected successfully. Socket fd: " << sock << endl;
- 
-     // Send registration message: REGISTER#username\r\n
-     string message = "REGISTER#" + user + CRLF;
-     // cout << "[DEBUG] Sending message: " << message;
-     // cout << "[DEBUG] Message length: " << message.length() << " bytes" << endl;
-     
-     if (!send_message(sock, message)) {
-         cout << "Failed to send registration request." << endl;
-         close(sock);
-         return;
-     }
- 
-     // cout << "[DEBUG] Message sent successfully. Waiting for response..." << endl;
- 
-     // Receive response from server
-     string response = receive_message(sock);
-     
-     // cout << "[DEBUG] Received response: '" << response << "'" << endl;
-     // cout << "[DEBUG] Response length: " << response.length() << " bytes" << endl;
-     
-     // Close temporary connection (registration uses short-lived connection)
-     close(sock);
- 
-     if (response.empty()) {
-         cout << "No response from server." << endl;
-         return;
-     }
- 
-     // Parse response and inform user of result
-     if (response.find("100 OK") != string::npos) {
-         cout << "Registration successful!" << endl;
-     } else if (response.find("210 FAIL") != string::npos) {
-         cout << "Registration failed. Username may already exist." << endl;
-     } else {
-         cout << "Unexpected response: " << response << endl;
-     }
- }
+void handle_register() {
+    cout << "\n--- Register ---" << endl;
+    
+    // Check if server connection is available
+    if (server_socket == -1) {
+        cout << "Error: Not connected to server." << endl;
+        return;
+    }
+    
+    // Check if already logged in (can't register if already logged in)
+    if (is_logged_in) {
+        cout << "You are already logged in. Please logout first if you want to register a new account." << endl;
+        return;
+    }
+    
+    cout << "Enter username: ";
+    string user;
+    getline(cin, user);
+
+    // Send registration message using persistent connection: REGISTER#username\r\n
+    string message = "REGISTER#" + user + CRLF;
+    
+    if (!send_message(server_socket, message)) {
+        cout << "Failed to send registration request." << endl;
+        return;
+    }
+
+    // Receive response from server
+    string response = receive_message(server_socket);
+
+    if (response.empty()) {
+        cout << "No response from server." << endl;
+        return;
+    }
+
+    // Parse response and inform user of result
+    if (response.find("100 OK") != string::npos) {
+        cout << "Registration successful!" << endl;
+        cout << "You can now login using option 2." << endl;
+    } else if (response.find("210 FAIL") != string::npos) {
+        cout << "Registration failed. Username may already exist." << endl;
+    } else {
+        cout << "Unexpected response: " << response << endl;
+    }
+}
  
  /*
   * Handle Login
@@ -227,61 +229,48 @@
 void handle_login() {
     cout << "\n--- Login ---" << endl;
     
-    // Check if already logged in
-    if (is_logged_in && server_socket != -1) {
-        cout << "You are already logged in. Please logout first (option 5) before logging in again." << endl;
+    // Check if server connection is available
+    if (server_socket == -1) {
+        cout << "Error: Not connected to server." << endl;
         return;
     }
     
-    // Close any existing connection before creating new one
-    if (server_socket != -1) {
-        close(server_socket);
-        server_socket = -1;
+    // Check if already logged in
+    if (is_logged_in) {
+        cout << "You are already logged in. Please logout first (option 5) before logging in again." << endl;
+        return;
     }
     
     cout << "Enter username: ";
     getline(cin, username);
 
-    // Create persistent connection to server (will be kept open until logout)
-    server_socket = connect_to_server(server_ip, server_port);
-    if (server_socket == -1) {
-        cout << "Failed to connect to server." << endl;
+    // Send login message using persistent connection: username#port\r\n
+    // Port is where we're listening for P2P connections
+    string message = username + "#" + to_string(my_port) + CRLF;
+    if (!send_message(server_socket, message)) {
+        cout << "Failed to send login request." << endl;
         return;
     }
- 
-     // Send login message: username#port\r\n
-     // Port is where we're listening for P2P connections
-     string message = username + "#" + to_string(my_port) + CRLF;
-     if (!send_message(server_socket, message)) {
-         cout << "Failed to send login request." << endl;
-         close(server_socket);
-         server_socket = -1;
-         return;
-     }
- 
-     // Receive response from server
-     string response = receive_message(server_socket);
- 
-     if (response.empty()) {
-         cout << "No response from server." << endl;
-         close(server_socket);
-         server_socket = -1;
-         return;
-     }
- 
-     // Check for authentication failure
-     if (response.find("220 AUTH_FAIL") != string::npos) {
-         cout << "Login failed. Please register first." << endl;
-         close(server_socket);
-         server_socket = -1;
-         return;
-     }
- 
-     // Parse response to extract balance and online users
-     parse_online_list(response);
-     is_logged_in = true;
-     cout << "Login successful!" << endl;
- }
+
+    // Receive response from server
+    string response = receive_message(server_socket);
+
+    if (response.empty()) {
+        cout << "No response from server." << endl;
+        return;
+    }
+
+    // Check for authentication failure
+    if (response.find("220 AUTH_FAIL") != string::npos) {
+        cout << "Login failed. Please register first." << endl;
+        return;
+    }
+
+    // Parse response to extract balance and online users
+    parse_online_list(response);
+    is_logged_in = true;
+    cout << "Login successful!" << endl;
+}
  
  /*
   * Handle List Request
@@ -436,28 +425,34 @@ void handle_login() {
   * Response: Bye\r\n
   */
  void handle_exit() {
-     if (is_logged_in) {
-         cout << "\n--- Logging out ---" << endl;
-         
-         // Send exit message to server
-         string message = "Exit" + string(CRLF);
-         if (send_message(server_socket, message)) {
-             // Wait for server's goodbye response
-             string response = receive_message(server_socket);
-             if (response.find("Bye") != string::npos) {
-                 cout << "Logged out successfully." << endl;
-             }
-         }
-         
-         // Close server connection
-         close(server_socket);
-         server_socket = -1;
-     }
-     
-     // Set flag to exit main loop
-     is_running = false;
-     cout << "Goodbye!" << endl;
- }
+    cout << "\n--- Exiting ---" << endl;
+    
+    // If logged in, send proper logout notification to server
+    if (is_logged_in && server_socket != -1) {
+        cout << "Logging out..." << endl;
+        
+        // Send exit message to server
+        string message = "Exit" + string(CRLF);
+        if (send_message(server_socket, message)) {
+            // Wait for server's goodbye response
+            string response = receive_message(server_socket);
+            if (response.find("Bye") != string::npos) {
+                cout << "Logged out successfully." << endl;
+            }
+        }
+    }
+    
+    // Close persistent server connection
+    if (server_socket != -1) {
+        close(server_socket);
+        server_socket = -1;
+    }
+    
+    // Mark logged out and stop the program
+    is_logged_in = false;
+    is_running = false;
+    cout << "Goodbye!" << endl;
+}
  
  /*
   * Connect to Server
