@@ -424,24 +424,28 @@ void handle_login() {
          return;
      }
  
-     // P2P Connection: Connect directly to recipient's client
-     cout << "Connecting to " << recipient << " at " << target_user.ip << ":" << target_user.port << "..." << endl;
-     int peer_sock = connect_to_server(target_user.ip, target_user.port);
-     if (peer_sock == -1) {
-         cout << "Failed to connect to recipient." << endl;
-         return;
-     }
- 
-     // Send transfer message directly to recipient: sender#amount#recipient\r\n
-     string transfer_msg = username + "#" + to_string(amount) + "#" + recipient + CRLF;
-     if (!send_message(peer_sock, transfer_msg)) {
-         cout << "Failed to send transfer request." << endl;
-         close(peer_sock);
-         return;
-     }
- 
-     cout << "Transfer request sent to " << recipient << endl;
-     close(peer_sock);  // Close P2P connection after sending
+    // P2P Connection: Connect directly to recipient's client
+    cout << "Connecting to " << recipient << " at " << target_user.ip << ":" << target_user.port << "..." << endl;
+    int peer_sock = connect_to_server(target_user.ip, target_user.port);
+    if (peer_sock == -1) {
+        cout << "Failed to connect to recipient." << endl;
+        return;
+    }
+
+    // Send transfer message directly to recipient: sender#amount#recipient
+    // NOTE: Testing without CRLF to match other commands
+    string transfer_msg = username + "#" + to_string(amount) + "#" + recipient;
+    
+    cout << "[DEBUG] Sending P2P message: '" << transfer_msg << "'" << endl;
+    
+    if (!send_message(peer_sock, transfer_msg)) {
+        cout << "Failed to send transfer request." << endl;
+        close(peer_sock);
+        return;
+    }
+
+    cout << "Transfer request sent to " << recipient << endl;
+    close(peer_sock);  // Close P2P connection after sending
  
      // Wait for recipient to report transaction to server
      this_thread::sleep_for(chrono::milliseconds(500));
