@@ -224,17 +224,30 @@
   * Protocol: <username>#<port>\r\n
   * Response: Multiple lines containing balance, public key, and online user list
   */
- void handle_login() {
-     cout << "\n--- Login ---" << endl;
-     cout << "Enter username: ";
-     getline(cin, username);
- 
-     // Create persistent connection to server (will be kept open until logout)
-     server_socket = connect_to_server(server_ip, server_port);
-     if (server_socket == -1) {
-         cout << "Failed to connect to server." << endl;
-         return;
-     }
+void handle_login() {
+    cout << "\n--- Login ---" << endl;
+    
+    // Check if already logged in
+    if (is_logged_in && server_socket != -1) {
+        cout << "You are already logged in. Please logout first (option 5) before logging in again." << endl;
+        return;
+    }
+    
+    // Close any existing connection before creating new one
+    if (server_socket != -1) {
+        close(server_socket);
+        server_socket = -1;
+    }
+    
+    cout << "Enter username: ";
+    getline(cin, username);
+
+    // Create persistent connection to server (will be kept open until logout)
+    server_socket = connect_to_server(server_ip, server_port);
+    if (server_socket == -1) {
+        cout << "Failed to connect to server." << endl;
+        return;
+    }
  
      // Send login message: username#port\r\n
      // Port is where we're listening for P2P connections
@@ -487,40 +500,40 @@
   * Sends a message through the specified socket.
   * Returns: true on success, false on failure
   */
- bool send_message(int sock, const string& message) {
-     ssize_t sent = send(sock, message.c_str(), message.length(), 0);
-     if (sent == -1) {
-         perror("send");
-         return false;
-     }
-     cout << "[DEBUG] Actually sent " << sent << " bytes" << endl;
-     return true;
- }
+bool send_message(int sock, const string& message) {
+    ssize_t sent = send(sock, message.c_str(), message.length(), 0);
+    if (sent == -1) {
+        perror("send");
+        return false;
+    }
+    // cout << "[DEBUG] Actually sent " << sent << " bytes" << endl;
+    return true;
+}
  
  /*
   * Receive Message
   * Receives a message from the specified socket.
   * Returns: received message as string, empty string on error
   */
- string receive_message(int sock) {
-     char buffer[BUFFER_SIZE];
-     memset(buffer, 0, BUFFER_SIZE);
-     
-     cout << "[DEBUG] Calling recv() on socket " << sock << "..." << endl;
-     ssize_t received = recv(sock, buffer, BUFFER_SIZE - 1, 0);
-     cout << "[DEBUG] recv() returned: " << received << endl;
-     
-     if (received == -1) {
-         perror("recv");
-         return "";
-     } else if (received == 0) {
-         cout << "[DEBUG] Connection closed by peer" << endl;
-         return "";
-     }
-     
-     cout << "[DEBUG] Received " << received << " bytes" << endl;
-     return string(buffer, received);
- }
+string receive_message(int sock) {
+    char buffer[BUFFER_SIZE];
+    memset(buffer, 0, BUFFER_SIZE);
+    
+    // cout << "[DEBUG] Calling recv() on socket " << sock << "..." << endl;
+    ssize_t received = recv(sock, buffer, BUFFER_SIZE - 1, 0);
+    // cout << "[DEBUG] recv() returned: " << received << endl;
+    
+    if (received == -1) {
+        perror("recv");
+        return "";
+    } else if (received == 0) {
+        // cout << "[DEBUG] Connection closed by peer" << endl;
+        return "";
+    }
+    
+    // cout << "[DEBUG] Received " << received << " bytes" << endl;
+    return string(buffer, received);
+}
  
  /*
   * Parse Online List
