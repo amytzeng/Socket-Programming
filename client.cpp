@@ -194,12 +194,17 @@
  * The connection was established when the program started and will be reused
  * for all operations (Login, List, Transfer, Exit).
  *
- * Protocol: REGISTER#<username>\r\n
+ * Protocol: REGISTER#<username>#<amount>\r\n
  * Response: 100 OK\r\n (success) or 210 FAIL\r\n (failure)
+ *
+ * Note: According to the assignment specification, registration requires both
+ * username and initial deposit amount.
  *
  * 重要：使用程式啟動時建立的持久連線
  * 使用程式啟動時建立的持久連線來註冊新使用者。此連線會被重複使用於
  * 所有操作（登入、查詢、轉帳、離線）。
+ *
+ * 注意：根據作業規格，註冊需要使用者名稱和初始存款金額。
  */
 void handle_register() {
     cout << "\n--- Register ---" << endl;
@@ -219,10 +224,15 @@ void handle_register() {
     cout << "Enter username: ";
     string user;
     getline(cin, user);
+    
+    cout << "Enter initial deposit amount: ";
+    string amount_str;
+    getline(cin, amount_str);
+    int amount = stoi(amount_str);
 
-    // Send registration message using persistent connection: REGISTER#username\r\n
+    // Send registration message using persistent connection: REGISTER#username#amount\r\n
     // 使用持久連線發送註冊訊息
-    string message = "REGISTER#" + user + CRLF;
+    string message = "REGISTER#" + user + "#" + to_string(amount) + CRLF;
     
     if (!send_message(server_socket, message)) {
         cout << "Failed to send registration request." << endl;
@@ -326,17 +336,22 @@ void handle_login() {
          return;
      }
  
-     // Receive response from server
-     string response = receive_message(server_socket);
- 
-     if (response.empty()) {
-         cout << "No response from server." << endl;
-         return;
-     }
- 
-     // Parse and display updated information
-     parse_online_list(response);
- }
+    // Receive response from server
+    string response = receive_message(server_socket);
+
+    if (response.empty()) {
+        cout << "No response from server." << endl;
+        return;
+    }
+
+    // DEBUG: Show what we received
+    cout << "\n[DEBUG] Received response:" << endl;
+    cout << "'" << response << "'" << endl;
+    cout << "[DEBUG] Response length: " << response.length() << " bytes" << endl;
+
+    // Parse and display updated information
+    parse_online_list(response);
+}
  
  /*
   * Handle Money Transfer (P2P)
@@ -580,14 +595,24 @@ string receive_message(int sock) {
         // Remove any CR/LF characters
         line.erase(std::remove(line.begin(), line.end(), '\r'), line.end());
         line.erase(std::remove(line.begin(), line.end(), '\n'), line.end());
-         account_balance = stoi(line);
-         cout << "Account Balance: $" << account_balance << endl;
+        
+        cout << "[DEBUG] Line 1 (balance): '" << line << "'" << endl;
+        
+        if (!line.empty()) {
+            account_balance = stoi(line);
+            cout << "Account Balance: $" << account_balance << endl;
+        } else {
+            cout << "[ERROR] Empty balance line!" << endl;
+        }
      }
      
     // Second line: server public key
     if (getline(iss, line)) {
         line.erase(std::remove(line.begin(), line.end(), '\r'), line.end());
         line.erase(std::remove(line.begin(), line.end(), '\n'), line.end());
+        
+        cout << "[DEBUG] Line 2 (public key): '" << line << "'" << endl;
+        
          server_public_key = line;
          // Don't print the full key, just indicate we received it
          if (!server_public_key.empty()) {
@@ -600,8 +625,15 @@ string receive_message(int sock) {
     if (getline(iss, line)) {
         line.erase(std::remove(line.begin(), line.end(), '\r'), line.end());
         line.erase(std::remove(line.begin(), line.end(), '\n'), line.end());
-         num_users = stoi(line);
-         cout << "Number of online users: " << num_users << endl;
+        
+        cout << "[DEBUG] Line 3 (num_users): '" << line << "'" << endl;
+        
+        if (!line.empty()) {
+            num_users = stoi(line);
+            cout << "Number of online users: " << num_users << endl;
+        } else {
+            cout << "[ERROR] Empty num_users line!" << endl;
+        }
      }
      
      // Clear current online users map before updating
@@ -615,6 +647,8 @@ string receive_message(int sock) {
         if (getline(iss, line)) {
             line.erase(std::remove(line.begin(), line.end(), '\r'), line.end());
             line.erase(std::remove(line.begin(), line.end(), '\n'), line.end());
+            
+            cout << "[DEBUG] User line " << (i+1) << ": '" << line << "'" << endl;
              
              // Parse: username#ip#port
              size_t pos1 = line.find('#');
@@ -626,10 +660,16 @@ string receive_message(int sock) {
                  user.ip = line.substr(pos1 + 1, pos2 - pos1 - 1);
                  user.port = stoi(line.substr(pos2 + 1));
                  
+                 cout << "[DEBUG] Parsed: username='" << user.username << "', ip='" << user.ip << "', port=" << user.port << endl;
+                 
                  // Add user to online users map
                  online_users[user.username] = user;
                  cout << user.username << " @ " << user.ip << ":" << user.port << endl;
+             } else {
+                 cout << "[ERROR] Failed to parse user line (pos1=" << pos1 << ", pos2=" << pos2 << ")" << endl;
              }
+         } else {
+             cout << "[ERROR] Could not read user line " << (i+1) << endl;
          }
      }
      cout << "----------------------------------------" << endl;
