@@ -597,8 +597,20 @@ string receive_message(int sock) {
         // Remove any CR/LF characters
         line.erase(std::remove(line.begin(), line.end(), '\r'), line.end());
         line.erase(std::remove(line.begin(), line.end(), '\n'), line.end());
-        account_balance = stoi(line);
-        cout << "Account Balance: $" << account_balance << endl;
+        
+        // Check if line contains a valid number
+        try {
+            if (!line.empty() && (isdigit(line[0]) || line[0] == '-')) {
+                account_balance = stoi(line);
+                cout << "Account Balance: $" << account_balance << endl;
+            } else {
+                cout << "[ERROR] Invalid balance format: '" << line << "'" << endl;
+                return;  // Stop parsing if format is wrong
+            }
+        } catch (const std::exception& e) {
+            cout << "[ERROR] Failed to parse balance: " << e.what() << endl;
+            return;
+        }
      }
      
     // Second line: server public key
@@ -770,35 +782,19 @@ string receive_message(int sock) {
          if (is_logged_in && server_socket != -1) {
              socket_mutex.lock();  // Lock because main thread may also use server_socket
              
-            // Send transaction report: TRANSACTION#sender#recipient#amount
-            // NOTE: Like List and Exit, TRANSACTION does not include CRLF
+            // Send transaction report to server
+            // Format: TRANSACTION#sender#recipient#amount (with TRANSACTION prefix, no CRLF)
+            // 向 Server 報告交易
+            // 格式：TRANSACTION#sender#recipient#amount（帶 TRANSACTION 前綴，不帶 CRLF）
             string transaction_msg = "TRANSACTION#" + sender + "#" + recipient + "#" + amount_str;
             
+            safe_print("[DEBUG] Reporting to server: '" + transaction_msg + "'");
+            
             if (send_message(server_socket, transaction_msg)) {
-                string response = receive_message(server_socket);
-                if (!response.empty()) {
-                    // Server responds with updated account info (List format)
-                    // Parse it to update our local balance
-                    // Server 回應更新後的帳戶資訊（List 格式）
-                    // 解析它來更新本地餘額
-                    
-                    // Use a stringstream to parse the response
-                    istringstream temp_iss(response);
-                    string temp_line;
-                    
-                    // First line should be the updated balance
-                    if (getline(temp_iss, temp_line)) {
-                        temp_line.erase(std::remove(temp_line.begin(), temp_line.end(), '\r'), temp_line.end());
-                        temp_line.erase(std::remove(temp_line.begin(), temp_line.end(), '\n'), temp_line.end());
-                        
-                        if (!temp_line.empty() && isdigit(temp_line[0])) {
-                            account_balance = stoi(temp_line);
-                            safe_print("Transaction confirmed. Updated balance: $" + to_string(account_balance));
-                        }
-                    }
-                } else {
-                    safe_print("[WARNING] No response from server for transaction report");
-                }
+                // Server may or may not respond
+                // Give it a moment to process
+                this_thread::sleep_for(chrono::milliseconds(100));
+                safe_print("Transaction reported to server.");
             } else {
                 safe_print("[WARNING] Failed to report transaction to server");
             }
