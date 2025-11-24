@@ -1,0 +1,1325 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>B12705017_曾文儀_part1</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2ab35bf5-e68e-8073-903b-c01e0917f44d" class="page sans"><header><h1 class="page-title">B12705017_曾文儀_part1</h1><p class="page-description"></p></header><div class="page-body"><p id="2ab35bf5-e68e-803d-bdc7-eb9f389c73ca" class="">資管三 B12705017 曾文儀</p><h2 id="2ab35bf5-e68e-8077-8f8c-ecdda36654ae" class="">環境說明</h2><p id="2ab35bf5-e68e-803c-935e-cb0ef00b02fa" class=""><strong>作業系統</strong>：macOS（Darwin 24.5.0）— 開發與測試環境</p><ul id="2ab35bf5-e68e-8048-b7a9-cca0e4a70017" class="bulleted-list"><li style="list-style-type:disc">Linux（Ubuntu 等）相容；支援其他 POSIX 的類 Unix 系統</li></ul><p id="2ab35bf5-e68e-8081-a721-dcc62f316414" class=""><strong>編譯器</strong>：g++（GNU C++ Compiler）</p><ul id="2ab35bf5-e68e-8013-85da-eb7a13aaa484" class="bulleted-list"><li style="list-style-type:disc">需支援 C++11（使用 <mark class="highlight-default"><code>std=c++11</code></mark>）、pthread（使用 <mark class="highlight-default"><code>pthread</code></mark>）</li></ul><p id="2ab35bf5-e68e-80e6-970c-c1891f32dbd1" class=""><strong>函式庫</strong></p><ul id="2ab35bf5-e68e-80e4-b620-f554d684bfab" class="bulleted-list"><li style="list-style-type:disc">標準 C++ 函式庫：<mark class="highlight-default"><code>iostream</code></mark><mark class="highlight-default">, </mark><mark class="highlight-default"><code>string</code></mark><mark class="highlight-default">, </mark><mark class="highlight-default"><code>vector</code></mark><mark class="highlight-default">, </mark><mark class="highlight-default"><code>map</code></mark><mark class="highlight-default">, </mark><mark class="highlight-default"><code>sstream</code></mark><mark class="highlight-default"> 等</mark></li></ul><ul id="2ab35bf5-e68e-8022-8d54-e4f8834edf1c" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">POSIX Socket API：</mark><mark class="highlight-default"><code>sys/socket.h</code></mark><mark class="highlight-default">, </mark><mark class="highlight-default"><code>netinet/in.h</code></mark><mark class="highlight-default">, </mark><mark class="highlight-default"><code>arpa/inet.h</code></mark></li></ul><ul id="2ab35bf5-e68e-8015-9a2f-dd68d09c66e2" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">POSIX Thread：pthread（透過 </mark><mark class="highlight-default"><code>pthread</code></mark><mark class="highlight-default"> 連結）</mark></li></ul><ul id="2ab35bf5-e68e-804a-9cc8-caa65af65a6f" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Unix 系統呼叫：</mark><mark class="highlight-default"><code>unistd.h</code></mark><mark class="highlight-default">（</mark><mark class="highlight-default"><code>close</code></mark><mark class="highlight-default">, </mark><mark class="highlight-default"><code>read</code></mark><mark class="highlight-default">, </mark><mark class="highlight-default"><code>write</code></mark><mark class="highlight-default"> 等）</mark></li></ul><p id="2ab35bf5-e68e-807e-b4ef-de17e5fb90e4" class=""><strong>系統需求</strong></p><ul id="2ab35bf5-e68e-8039-ba47-e13d678545b9" class="bulleted-list"><li style="list-style-type:disc">不需要額外安裝第三方套件</li></ul><ul id="2ab35bf5-e68e-80de-97c6-ee32aa3e2014" class="bulleted-list"><li style="list-style-type:disc">使用系統內建的標準函式庫與 API</li></ul><ul id="2ab35bf5-e68e-80d8-a76f-d6ce74a69f8c" class="bulleted-list"><li style="list-style-type:disc">需要網路連線（TCP/IP）</li></ul><h3 id="2ab35bf5-e68e-80e4-b760-e60dc4f2e59e" class="">編譯選項（Makefile 中已設定）</h3><div id="2ab35bf5-e68e-8062-9e83-e34cd58d144a" class="column-list"><div id="2ab35bf5-e68e-800a-8931-c57c0020717f" style="width:100%" class="column"><ul id="2ab35bf5-e68e-805e-ad85-eb95672b659d" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default"><code>std=c++11</code></mark><mark class="highlight-default">：使用 C++11 標準</mark></li></ul><ul id="2ab35bf5-e68e-803b-ba0b-cd0f84a8f45c" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default"><code>Wall -Wextra</code></mark><mark class="highlight-default">：啟用警告</mark></li></ul><ul id="2ab35bf5-e68e-80d4-a07a-fd27c6284f4e" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default"><code>pthread</code></mark><mark class="highlight-default">：連結 pthread 函式庫</mark></li></ul><ul id="2ab35bf5-e68e-80c9-b62b-d3c758b011e7" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default"><code>O2</code></mark><mark class="highlight-default">：最佳化等級 2</mark></li></ul></div><div id="2ab35bf5-e68e-8012-9280-c0fb8c31877b" style="width:100%" class="column"><p id="2ab35bf5-e68e-8000-9c40-f2119208f6d9" class=""><strong>測試環境</strong></p><ul id="2ab35bf5-e68e-8029-9ae0-f83bed9821c0" class="bulleted-list"><li style="list-style-type:disc">至少需要三個終端機視窗（一個執行 Server，兩個執行 Client）</li></ul><ul id="2ab35bf5-e68e-804f-b1eb-ef1ce746a97a" class="bulleted-list"><li style="list-style-type:disc">確保使用的 port 沒有被其他程式佔用</li></ul></div></div><hr id="2ab35bf5-e68e-803f-9d2c-db1b2509fa7a"/><h2 id="2ab35bf5-e68e-809d-8b0b-c7ec816fbf00" class="">編譯與執行</h2><ol type="1" id="2ab35bf5-e68e-808d-8315-e7be27d86157" class="numbered-list" start="1"><li>開啟終端機，切換到專案目錄後，執行 <mark class="highlight-blue"><code>make</code></mark> 編譯<ul id="2ab35bf5-e68e-80e9-81a0-e0dbe98174b1" class="bulleted-list"><li style="list-style-type:disc">會自動使用 Makefile 編譯 <mark class="highlight-default"><code>client.cpp</code></mark><mark class="highlight-default"> → </mark>成功後產生 <mark class="highlight-default"><code>client</code></mark> 可執行檔</li></ul><ul id="2ab35bf5-e68e-804c-8968-c07339bbe45a" class="bulleted-list"><li style="list-style-type:disc">如果要清除編譯產物：<mark class="highlight-blue"><code>make clean</code></mark><mark class="highlight-default">，</mark>刪除 <mark class="highlight-default"><code>client</code></mark><mark class="highlight-default"> 和 </mark><mark class="highlight-default"><code>client.o</code></mark><mark class="highlight-default">（或是 </mark><mark class="highlight-blue"><code>make rebuild</code></mark><mark class="highlight-default">）</mark></li></ul></li></ol><ol type="1" id="2ab35bf5-e68e-8019-a69f-e6b4b9f8ce8e" class="numbered-list" start="2"><li>編譯完成後，以 <mark class="highlight-blue"><code>./client</code></mark> 執行程式</li></ol><ol type="1" id="2ab35bf5-e68e-80e2-8d32-e72fec835697" class="numbered-list" start="3"><li>程式啟動後，會要求輸入連線資訊：<ul id="2ab35bf5-e68e-80b1-a322-e7b5c1a60fda" class="bulleted-list"><li style="list-style-type:disc">Server IP address：（本機測試用 <mark class="highlight-default"><code>127.0.0.1</code></mark>）</li></ul><ul id="2ab35bf5-e68e-8043-abc8-f810cd855bb1" class="bulleted-list"><li style="list-style-type:disc">Server Port：Server 監聽的 port（例如 <mark class="highlight-default"><code>8888</code></mark>）</li></ul><ul id="2ab35bf5-e68e-8072-805a-eeb56376d185" class="bulleted-list"><li style="list-style-type:disc">Your listening port for P2P connections：自己（client）的 P2P 監聽 port（與 Server 不同）</li></ul></li></ol><ol type="1" id="2ab35bf5-e68e-80c2-a1a6-f32854612724" class="numbered-list" start="4"><li>使用主選單，輸入數字執行不同功能<ul id="2ab35bf5-e68e-8085-9a06-d39e0df4c0ea" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default"><code>1</code></mark><mark class="highlight-default"> - Register（註冊）：</mark>輸入使用者名稱與初始餘額；註冊使用持久連線。</li></ul><ul id="2ab35bf5-e68e-8008-bb52-e1570c4819cf" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default"><code>2</code></mark><mark class="highlight-default"> - Login（登入）：</mark>程式會接收伺服器回傳的帳戶餘額、伺服器公鑰、以及目前在線的使用者；登入後才能使用其他功能。</li></ul><ul id="2ab35bf5-e68e-8027-b32e-dbb736ff9912" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default"><code>3</code></mark><mark class="highlight-default"> - List（查詢餘額和線上使用者）：</mark>可以隨時呼叫，用於確認餘額是否正確更新。</li></ul><ul id="2ab35bf5-e68e-8095-ad8c-f9a9458182b7" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default"><code>4</code></mark><mark class="highlight-default"> - Transfer（轉帳給其他使用者）：</mark>向其他在線使用者發送轉帳請求。<ul id="2ab35bf5-e68e-8022-a02e-d41cb5bb7870" class="bulleted-list"><li style="list-style-type:circle"><strong>付款方</strong>直接連線到收款方的 Client（不經過 Server）、立即扣除本地餘額</li></ul><ul id="2ab35bf5-e68e-8038-85bc-f0cfb1790b20" class="bulleted-list"><li style="list-style-type:circle"><strong>收款方</strong>收到轉帳訊息後立即增加本地餘額、自動向 Server 報告交易，更新雙方帳戶餘額</li></ul></li></ul><ul id="2ab35bf5-e68e-80aa-a31e-d00e9237a575" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default"><code>5</code></mark><mark class="highlight-default"> - Exit（離線並結束程式</mark>）：程式會通知伺服器並關閉所有連線。</li></ul></li></ol><ol type="1" id="2ab35bf5-e68e-8083-8898-c9fed46b6bf3" class="numbered-list" start="5"><li>結束程式<ul id="2ab35bf5-e68e-80e9-b694-c07dafb79938" class="bulleted-list"><li style="list-style-type:disc">選擇選單 <mark class="highlight-default"><code>5</code></mark> 離線（不要直接按 Ctrl+C 強制結束）</li></ul></li></ol><hr id="2ab35bf5-e68e-80cd-9db1-c91f9a393896"/><h2 id="2ab35bf5-e68e-805d-abf2-d43c2517061c" class=""><strong>程式的架構與流程</strong></h2><ol type="1" id="2ab35bf5-e68e-80b1-b6e5-ed6c2f1d2d62" class="numbered-list" start="1"><li>在程式啟動後，會立即建立與伺服器的持久連線（persistent connection）。這個連線會用於所有後續操作（註冊、登入、查詢、離線），直到程式結束。同時，程式會啟動一個背景執行緒來監聽其他用戶的 P2P 轉帳請求。</li></ol><ol type="1" id="2ab35bf5-e68e-80be-be7c-fffcb7311ef5" class="numbered-list" start="2"><li>多執行緒架構：<ul id="2ab35bf5-e68e-80bd-b33f-d26b32620088" class="bulleted-list"><li style="list-style-type:disc"><strong>主執行緒 (Main Thread)</strong>：負責使用者介面的呈現和互動，包括顯示選單、接收使用者輸入、執行對應的功能（註冊、登入、查詢、轉帳、離線）、以及與 Server 的通訊。</li></ul><ul id="2ab35bf5-e68e-8075-b40e-daa554740b19" class="bulleted-list"><li style="list-style-type:disc"><strong>監聽執行緒 (Listener Thread)</strong>：在程式啟動時建立並在背景持續執行，負責監聽指定的 port，等待其他 Client 的連線請求。當有其他 Client 要轉帳時，他們會連接到這個 port。</li></ul><ul id="2ab35bf5-e68e-80f7-ba2f-fd5a291bc01d" class="bulleted-list"><li style="list-style-type:disc"><strong>處理執行緒 (Handler Threads)</strong>：當監聽執行緒接受一個新的轉帳連線時，會動態建立一個新的處理執行緒來處理該筆轉帳。這個執行緒會接收轉帳訊息、解析內容、更新本地餘額、向 Server 報告交易、然後結束。</li></ul><ul id="2ab35bf5-e68e-80c8-8607-febab8de3d1d" class="bulleted-list"><li style="list-style-type:disc"><strong>同步機制</strong>：<ul id="2ab35bf5-e68e-8043-86a1-c21bf89582c3" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-default"><code>cout_mutex</code></mark><mark class="highlight-default">：保護標準輸出，避免多個執行緒同時輸出造成混亂</mark></li></ul><ul id="2ab35bf5-e68e-80e2-be0f-e268f358f116" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-default"><code>socket_mutex</code></mark><mark class="highlight-default">：保護 </mark><mark class="highlight-default"><code>server_socket</code></mark><mark class="highlight-default">，避免多個執行緒同時使用造成資料混亂</mark></li></ul><ul id="2ab35bf5-e68e-802d-9608-c4720ab6942a" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-default"><code>users_mutex</code></mark><mark class="highlight-default">：保護 </mark><mark class="highlight-default"><code>online_users</code></mark><mark class="highlight-default"> map，確保執行緒安全</mark></li></ul></li></ul></li></ol><ol type="1" id="2ab35bf5-e68e-80e7-9daf-e1b10150cde1" class="numbered-list" start="3"><li>網路通訊<ul id="2ab35bf5-e68e-800c-936d-dcb08d3a835d" class="bulleted-list"><li style="list-style-type:disc"><strong>與伺服器的通訊</strong>：使用 TCP Socket 進行與伺服器之間的通訊。程式在啟動時建立一個持久連線，所有操作（註冊、登入、查詢、離線）都使用這個連線。</li></ul><ul id="2ab35bf5-e68e-80be-a31e-e8dfe8940b01" class="bulleted-list"><li style="list-style-type:disc"><strong>P2P 通訊</strong>：轉帳時，付款方會建立一個新的 TCP Socket 連線直接連接到收款方的 Client，發送轉帳訊息後即關閉連線。這是典型的 P2P 通訊架構。</li></ul><ul id="2ab35bf5-e68e-80c2-bef0-d4eb7201706b" class="bulleted-list"><li style="list-style-type:disc"><strong>訊息格式</strong>：所有訊息使用 ASCII 文字編碼，使用 <mark class="highlight-default"><code>#</code></mark><mark class="highlight-default"> 符號分隔欄位，並以 </mark><mark class="highlight-default"><code>\r\n</code></mark><mark class="highlight-default">（CRLF）作為訊息結束標記（部分命令如 </mark><mark class="highlight-default"><code>List</code></mark><mark class="highlight-default"> 和 </mark><mark class="highlight-default"><code>Exit</code></mark><mark class="highlight-default"> 不使用 C</mark>RLF）。</li></ul></li></ol><hr id="2ab35bf5-e68e-8093-bb4e-f73b76c5c2bc"/><h2 id="2ab35bf5-e68e-808d-a5fd-d92c898b7a24" class="">程式碼說明</h2><h3 id="2ab35bf5-e68e-803d-86b5-d12f6ed1737a" class="">標頭檔與常數定義</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2ab35bf5-e68e-801d-84c6-c80687a61443" class="code code-wrap"><code class="language-C++" style="white-space:pre-wrap;word-break:break-all">#include &lt;iostream&gt;        // 標準 C++ 函式庫，用於輸入輸出、字串處理、容器操作等
+#include &lt;string&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+#include &lt;map&gt;
+#include &lt;thread&gt;          // C++11 標準執行緒函式庫，用於多執行緒程式設計和同步
+#include &lt;mutex&gt;
+#include &lt;chrono&gt;
+#include &lt;sstream&gt;         // POSIX Socket API，用於網路通訊
+#include &lt;sys/socket.h&gt;
+#include &lt;netinet/in.h&gt;
+#include &lt;arpa/inet.h&gt;
+#include &lt;unistd.h&gt;        // Unix 系統呼叫和錯誤處理
+#include &lt;errno.h&gt;
+
+using namespace std;
+
+// Constants
+#define BUFFER_SIZE 4096  // Maximum size for network messages
+#define CRLF &quot;\r\n&quot;       // Carriage Return + Line Feed (protocol requirement)</code></pre><h3 id="2ab35bf5-e68e-80f2-93b3-d814d1075aa7" class="">全域變數與資料結構</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2ab35bf5-e68e-8067-862b-f5a419e5435c" class="code code-wrap"><code class="language-C++" style="white-space:pre-wrap;word-break:break-all">// Global variables for network connections
+int server_socket = -1;   // Socket for persistent connection to server
+int listen_socket = -1;   // Socket for listening to P2P connections from other clients
+string username = &quot;&quot;;     // Current logged-in username
+string server_ip = &quot;&quot;;    // Server&#x27;s IP address
+int server_port = 0;      // Server&#x27;s port number
+int my_port = 0;          // Our listening port for P2P connections
+
+// Global variables for account state
+int account_balance = 10000;        // Current account balance (initialized with default)
+string server_public_key = &quot;&quot;;      // Server&#x27;s public key (for Phase 2)
+bool is_logged_in = false;          // Login status flag
+bool is_running = true;             // Main loop control flag
+
+// Mutex locks for thread synchronization
+mutex cout_mutex;    // Protects console output from multiple threads
+mutex socket_mutex;  // Protects server_socket from concurrent access
+mutex users_mutex;   // Protects online_users map from concurrent access
+
+// Structure to hold online user information
+struct OnlineUser {
+    string username;  // User&#x27;s account name
+    string ip;        // User&#x27;s IP address
+    int port;         // User&#x27;s listening port for P2P connections
+};
+
+// Map to store all currently online users (username -&gt; OnlineUser)
+map&lt;string, OnlineUser&gt; online_users;</code></pre><h3 id="2ab35bf5-e68e-801f-b4ef-ee48e1441d36" class="">函式宣告與實作</h3><ol type="1" id="2ab35bf5-e68e-8007-8038-c99370c578cb" class="numbered-list" start="1"><li><strong>註冊功能 (handle_register)</strong><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2ab35bf5-e68e-8092-92b4-e458f620466e" class="code code-wrap"><code class="language-C++" style="white-space:pre-wrap;word-break:break-all">void handle_register() {
+    // Check if server connection is available
+    if (server_socket == -1) {
+        cout &lt;&lt; &quot;Error: Not connected to server.&quot; &lt;&lt; endl;
+        return;
+    }
+    
+    // Check if already logged in
+    if (is_logged_in) {
+        cout &lt;&lt; &quot;You are already logged in. Please logout first...&quot; &lt;&lt; endl;
+        return;
+    }
+    
+    cout &lt;&lt; &quot;Enter username: &quot;;
+    string user;
+    getline(cin, user);
+    
+    cout &lt;&lt; &quot;Enter initial deposit amount: &quot;;
+    string amount_str;
+    getline(cin, amount_str);
+    int amount = stoi(amount_str);
+
+    // Send registration message: REGISTER#username#amount\r\n
+    string message = &quot;REGISTER#&quot; + user + &quot;#&quot; + to_string(amount) + CRLF;
+    
+    if (!send_message(server_socket, message)) {
+        cout &lt;&lt; &quot;Failed to send registration request.&quot; &lt;&lt; endl;
+        return;
+    }
+
+    // Receive response from server
+    string response = receive_message(server_socket);
+
+    if (response.empty()) {
+        cout &lt;&lt; &quot;No response from server.&quot; &lt;&lt; endl;
+        return;
+    }
+
+    // Parse response
+    if (response.find(&quot;100 OK&quot;) != string::npos) {
+        cout &lt;&lt; &quot;\nRegistration successful!&quot; &lt;&lt; endl;
+    } else if (response.find(&quot;210 FAIL&quot;) != string::npos) {
+        cout &lt;&lt; &quot;\nRegistration failed. Username may already exist.&quot; &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; &quot;\nUnexpected response: &quot; &lt;&lt; response &lt;&lt; endl;
+    }
+}</code></pre><ul id="2ab35bf5-e68e-8091-a47c-f283ac2aa040" class="bulleted-list"><li style="list-style-type:disc">功能：向伺服器發送註冊請求，並根據伺服器回應判斷註冊是否成功。</li></ul><ul id="2ab35bf5-e68e-8057-878a-f2d91b544d0c" class="bulleted-list"><li style="list-style-type:disc">流程：<ol type="1" id="2ab35bf5-e68e-80bb-8014-cd36e5be3b5f" class="numbered-list" start="1"><li>構建註冊訊息 <mark class="highlight-default"><code>&quot;REGISTER#username#amount\r\n&quot;</code></mark> 並使用持久連線發送給伺服器</li></ol><ol type="1" id="2ab35bf5-e68e-805d-8bb2-d5eb48627dab" class="numbered-list" start="2"><li>接收伺服器回應並解析：<ul id="2ab35bf5-e68e-80bb-b20b-feeb408112e8" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default"><code>&quot;100 OK&quot;</code></mark> 表示註冊成功</li></ul><ul id="2ab35bf5-e68e-8098-a63b-d5ed0f365d15" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default"><code>&quot;210 FAIL&quot;</code></mark> 表示註冊失敗，可能是帳號已存在</li></ul></li></ol></li></ul></li></ol><ol type="1" id="2ab35bf5-e68e-80d3-b536-f9455e300da5" class="numbered-list" start="2"><li><strong>登入功能 (handle_login)</strong><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2ab35bf5-e68e-8033-809a-c8430167357c" class="code code-wrap"><code class="language-C++" style="white-space:pre-wrap;word-break:break-all">void handle_login() {
+    // Check if server connection is available
+    if (server_socket == -1) {
+        cout &lt;&lt; &quot;Error: Not connected to server.&quot; &lt;&lt; endl;
+        return;
+    }
+    
+    // Check if already logged in
+    if (is_logged_in) {
+        cout &lt;&lt; &quot;You are already logged in...&quot; &lt;&lt; endl;
+        return;
+    }
+    
+    cout &lt;&lt; &quot;Enter username: &quot;;
+    getline(cin, username);
+
+    // Send login message: username#port\r\n
+    string message = username + &quot;#&quot; + to_string(my_port) + CRLF;
+    if (!send_message(server_socket, message)) {
+        cout &lt;&lt; &quot;Failed to send login request.&quot; &lt;&lt; endl;
+        username = &quot;&quot;;
+        return;
+    }
+
+    // Receive response from server
+    string response = receive_message(server_socket);
+
+    if (response.empty()) {
+        cout &lt;&lt; &quot;No response from server.&quot; &lt;&lt; endl;
+        username = &quot;&quot;;
+        return;
+    }
+
+    // Check for authentication failure
+    if (response.find(&quot;220 AUTH_FAIL&quot;) != string::npos) {
+        cout &lt;&lt; &quot;\nLogin failed. Please register first.&quot; &lt;&lt; endl;
+        username = &quot;&quot;;
+        return;
+    }
+
+    // Parse response to extract balance and online users
+    parse_online_list(response);
+    is_logged_in = true;
+    cout &lt;&lt; &quot;\nLogin successful!&quot; &lt;&lt; endl;
+}</code></pre><ul id="2ab35bf5-e68e-8046-ae17-f218e5b323a6" class="bulleted-list"><li style="list-style-type:disc">功能：向伺服器發送登入請求，並根據回應更新客戶端狀態。</li></ul><ul id="2ab35bf5-e68e-803a-aa99-c2cdecdd7f05" class="bulleted-list"><li style="list-style-type:disc">流程：<ol type="1" id="2ab35bf5-e68e-806b-a3e0-dcd925d9e6c9" class="numbered-list" start="1"><li>要求使用者輸入使用者名稱</li></ol><ol type="1" id="2ab35bf5-e68e-807b-b866-fe3042b86991" class="numbered-list" start="2"><li>構建登入訊息 <mark class="highlight-default"><code>&quot;username#port\r\n&quot;</code></mark> 並使用持久連線發送給伺服器</li></ol><ol type="1" id="2ab35bf5-e68e-800c-904d-dc3132a9ded8" class="numbered-list" start="3"><li>接收伺服器回應並解析：<ul id="2ab35bf5-e68e-808e-983d-e4024cd18d65" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default"><code>&quot;220 AUTH_FAIL&quot;</code></mark> 表示登入失敗，可能是帳號未註冊</li></ul></li></ol></li></ul></li></ol><ol type="1" id="2ab35bf5-e68e-80d9-8080-efcf664e5318" class="numbered-list" start="3"><li><strong>解析伺服器回應的清單 (parse_online_list)</strong><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2ab35bf5-e68e-8064-8d1a-fccdd126451f" class="code code-wrap"><code class="language-C++" style="white-space:pre-wrap;word-break:break-all">void parse_online_list(const string&amp; response) {
+    istringstream iss(response);
+    string line;
+    
+    // First line: account balance
+    if (getline(iss, line)) {
+        // Remove any CR/LF characters
+        line.erase(std::remove(line.begin(), line.end(), &#x27;\r&#x27;), line.end());
+        line.erase(std::remove(line.begin(), line.end(), &#x27;\n&#x27;), line.end());
+        
+        // Check if line contains a valid number
+        try {
+            if (!line.empty() &amp;&amp; (isdigit(line[0]) || line[0] == &#x27;-&#x27;)) {
+                account_balance = stoi(line);
+                cout &lt;&lt; &quot;Account Balance: $&quot; &lt;&lt; account_balance &lt;&lt; endl;
+            } else {
+                cout &lt;&lt; &quot;[ERROR] Invalid balance format: &#x27;&quot; &lt;&lt; line &lt;&lt; &quot;&#x27;&quot; &lt;&lt; endl;
+                return;
+            }
+        } catch (const std::exception&amp; e) {
+            cout &lt;&lt; &quot;[ERROR] Failed to parse balance: &quot; &lt;&lt; e.what() &lt;&lt; endl;
+            return;
+        }
+    }
+    
+    // Second line: server public key
+    if (getline(iss, line)) {
+        line.erase(std::remove(line.begin(), line.end(), &#x27;\r&#x27;), line.end());
+        line.erase(std::remove(line.begin(), line.end(), &#x27;\n&#x27;), line.end());
+        server_public_key = line;
+        if (!server_public_key.empty()) {
+            cout &lt;&lt; &quot;Server Public Key: [Received]&quot; &lt;&lt; endl;
+        }
+    }
+    
+    // Third line: number of online users
+    int num_users = 0;
+    if (getline(iss, line)) {
+        line.erase(std::remove(line.begin(), line.end(), &#x27;\r&#x27;), line.end());
+        line.erase(std::remove(line.begin(), line.end(), &#x27;\n&#x27;), line.end());
+        num_users = stoi(line);
+        cout &lt;&lt; &quot;Number of online users: &quot; &lt;&lt; num_users &lt;&lt; endl;
+    }
+    
+    // Clear current online users map before updating
+    users_mutex.lock();
+    online_users.clear();
+    
+    // Parse each online user&#x27;s information
+    cout &lt;&lt; &quot;\nOnline Users:&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;----------------------------------------&quot; &lt;&lt; endl;
+    for (int i = 0; i &lt; num_users; i++) {
+        if (getline(iss, line)) {
+            line.erase(std::remove(line.begin(), line.end(), &#x27;\r&#x27;), line.end());
+            line.erase(std::remove(line.begin(), line.end(), &#x27;\n&#x27;), line.end());
+            
+            // Parse: username#ip#port
+            size_t pos1 = line.find(&#x27;#&#x27;);
+            size_t pos2 = line.find(&#x27;#&#x27;, pos1 + 1);
+            
+            if (pos1 != string::npos &amp;&amp; pos2 != string::npos) {
+                OnlineUser user;
+                user.username = line.substr(0, pos1);
+                user.ip = line.substr(pos1 + 1, pos2 - pos1 - 1);
+                user.port = stoi(line.substr(pos2 + 1));
+                
+                // Add user to online users map
+                online_users[user.username] = user;
+                cout &lt;&lt; user.username &lt;&lt; &quot; @ &quot; &lt;&lt; user.ip &lt;&lt; &quot;:&quot; &lt;&lt; user.port &lt;&lt; endl;
+            }
+        }
+    }
+    cout &lt;&lt; &quot;----------------------------------------&quot; &lt;&lt; endl;
+    users_mutex.unlock();
+}</code></pre><ul id="2ab35bf5-e68e-8058-84a3-c33a8864dbab" class="bulleted-list"><li style="list-style-type:disc">功能：解析伺服器回應的帳戶餘額、伺服器公鑰、在線人數以及在線使用者列表。</li></ul><ul id="2ab35bf5-e68e-80aa-9278-f405f6bea0be" class="bulleted-list"><li style="list-style-type:disc">流程：<ol type="1" id="2ab35bf5-e68e-804c-8aaf-d019cb90e29c" class="numbered-list" start="1"><li>使用 <mark class="highlight-default"><code>istringstream</code></mark> 按行讀取回應</li></ol><ol type="1" id="2ab35bf5-e68e-80b4-a440-c48cb529c90e" class="numbered-list" start="2"><li>依序解析：<ul id="2ab35bf5-e68e-8035-a588-e1ceddaf1204" class="bulleted-list"><li style="list-style-type:disc">第一行為帳戶餘額，轉換為 <mark class="highlight-default"><code>int</code></mark> 並更新 <mark class="highlight-default"><code>account_balance</code></mark></li></ul><ul id="2ab35bf5-e68e-801c-8dbd-fbd243c12a05" class="bulleted-list"><li style="list-style-type:disc">第二行為伺服器公鑰，儲存到 <mark class="highlight-default"><code>server_public_key</code></mark></li></ul><ul id="2ab35bf5-e68e-8000-9c83-fa1efadca3a5" class="bulleted-list"><li style="list-style-type:disc">第三行為在線人數，轉換為 <mark class="highlight-default"><code>int</code></mark></li></ul><ul id="2ab35bf5-e68e-80b3-8fad-ec16b0507d16" class="bulleted-list"><li style="list-style-type:disc">接下來的若干行為每個在線使用者的資訊，格式為 <mark class="highlight-default"><code>&quot;username#ip#port&quot;</code></mark>，解析後存入 <mark class="highlight-default"><code>online_users</code></mark> map</li></ul></li></ol><ol type="1" id="2ab35bf5-e68e-802b-807f-c3248b969606" class="numbered-list" start="3"><li>使用 <mark class="highlight-default"><code>users_mutex</code></mark> 保護 <mark class="highlight-default"><code>online_users</code></mark> map 的更新操作</li></ol></li></ul><ul id="2ab35bf5-e68e-809d-89fc-eab0e2a57a90" class="bulleted-list"><li style="list-style-type:disc">錯誤處理：包含完整的錯誤處理機制，包括格式檢查和例外處理。</li></ul></li></ol><ol type="1" id="2ab35bf5-e68e-807d-a72d-eb845a390ad2" class="numbered-list" start="4"><li><strong>取得帳戶餘額與上線清單 (handle_list)</strong><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2ab35bf5-e68e-8039-a017-f53b7ff3a88f" class="code code-wrap"><code class="language-C++" style="white-space:pre-wrap;word-break:break-all">void handle_list() {
+    // Check if user is logged in
+    if (!is_logged_in) {
+        cout &lt;&lt; &quot;Please login first.&quot; &lt;&lt; endl;
+        return;
+    }
+
+    cout &lt;&lt; &quot;\n--- Requesting updated list ---&quot; &lt;&lt; endl;
+
+    // Send list request to server
+    // NOTE: List command does NOT include CRLF
+    string message = &quot;List&quot;;
+    if (!send_message(server_socket, message)) {
+        cout &lt;&lt; &quot;Failed to send list request.&quot; &lt;&lt; endl;
+        return;
+    }
+
+    // Receive response from server
+    string response = receive_message(server_socket);
+
+    if (response.empty()) {
+        cout &lt;&lt; &quot;No response from server.&quot; &lt;&lt; endl;
+        return;
+    }
+
+    // Parse and display updated information
+    parse_online_list(response);
+}</code></pre><ul id="2ab35bf5-e68e-807d-8ad4-e13302c6d5a9" class="bulleted-list"><li style="list-style-type:disc">功能：向伺服器請求帳戶餘額與在線使用者清單，並解析伺服器回應。</li></ul><ul id="2ab35bf5-e68e-8095-bfdb-fbc8c0ea3dbd" class="bulleted-list"><li style="list-style-type:disc">流程：<ol type="1" id="2ab35bf5-e68e-801e-af13-d4e69f59e3d4" class="numbered-list" start="1"><li>發送訊息 <mark class="highlight-default"><code>&quot;List&quot;</code></mark> 給伺服器（不使用 CRLF）</li></ol><ol type="1" id="2ab35bf5-e68e-80c4-b9c9-d48c7a917aec" class="numbered-list" start="2"><li>接收並解析伺服器回應，使用 <mark class="highlight-default"><code>parse_online_list</code></mark> 函式解析並顯示</li></ol></li></ul><ul id="2ab35bf5-e68e-80e8-bab0-e5272542ba2b" class="bulleted-list"><li style="list-style-type:disc">使用者完成轉帳後想確認餘額是否正確更新、或者想要查看是否有新的使用者上線時使用。</li></ul></li></ol><ol type="1" id="2ab35bf5-e68e-80b9-9fdd-e31feaad6845" class="numbered-list" start="5"><li><strong>轉帳功能 (handle_transfer)</strong><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2ab35bf5-e68e-800c-b5a5-dd6804478e97" class="code code-wrap"><code class="language-C++" style="white-space:pre-wrap;word-break:break-all">void handle_transfer() {
+    // Check if user is logged in
+    if (!is_logged_in) {
+        cout &lt;&lt; &quot;Please login first.&quot; &lt;&lt; endl;
+        return;
+    }
+
+    cout &lt;&lt; &quot;\n--- Transfer Money ---&quot; &lt;&lt; endl;
+    
+    // Show list of online users (excluding ourselves)
+    users_mutex.lock();
+    if (online_users.empty()) {
+        cout &lt;&lt; &quot;No other users online.&quot; &lt;&lt; endl;
+        users_mutex.unlock();
+        return;
+    }
+
+    cout &lt;&lt; &quot;Online users:&quot; &lt;&lt; endl;
+    int index = 1;
+    vector&lt;string&gt; user_list;
+    for (const auto&amp; pair : online_users) {
+        // Don&#x27;t show ourselves in the list
+        if (pair.first != username) {
+            cout &lt;&lt; index++ &lt;&lt; &quot;. &quot; &lt;&lt; pair.first &lt;&lt; endl;
+            user_list.push_back(pair.first);
+        }
+    }
+    users_mutex.unlock();
+
+    if (user_list.empty()) {
+        cout &lt;&lt; &quot;No other users online.&quot; &lt;&lt; endl;
+        return;
+    }
+
+    // Get recipient username from user
+    cout &lt;&lt; &quot;Enter recipient username: &quot;;
+    string recipient;
+    getline(cin, recipient);
+
+    // Check if recipient exists and is online
+    users_mutex.lock();
+    auto it = online_users.find(recipient);
+    if (it == online_users.end()) {
+        cout &lt;&lt; &quot;User not found or not online.&quot; &lt;&lt; endl;
+        users_mutex.unlock();
+        return;
+    }
+    OnlineUser target_user = it-&gt;second;  // Copy recipient&#x27;s connection info
+    users_mutex.unlock();
+
+    // Get transfer amount from user
+    cout &lt;&lt; &quot;Enter amount to transfer: &quot;;
+    string amount_str;
+    getline(cin, amount_str);
+    int amount = stoi(amount_str);
+
+    // Validate amount
+    if (amount &lt;= 0) {
+        cout &lt;&lt; &quot;Invalid amount.&quot; &lt;&lt; endl;
+        return;
+    }
+
+    // Check if we have sufficient balance
+    if (amount &gt; account_balance) {
+        cout &lt;&lt; &quot;Insufficient balance.&quot; &lt;&lt; endl;
+        return;
+    }
+
+    // P2P Connection: Connect directly to recipient&#x27;s client
+    cout &lt;&lt; &quot;Connecting to &quot; &lt;&lt; recipient &lt;&lt; &quot; at &quot; &lt;&lt; target_user.ip &lt;&lt; &quot;:&quot; &lt;&lt; target_user.port &lt;&lt; &quot;...&quot; &lt;&lt; endl;
+    int peer_sock = connect_to_server(target_user.ip, target_user.port);
+    if (peer_sock == -1) {
+        cout &lt;&lt; &quot;Failed to connect to recipient.&quot; &lt;&lt; endl;
+        return;
+    }
+
+    // Send transfer message directly to recipient: sender#amount#recipient
+    string transfer_msg = username + &quot;#&quot; + to_string(amount) + &quot;#&quot; + recipient;
+    
+    if (!send_message(peer_sock, transfer_msg)) {
+        cout &lt;&lt; &quot;Failed to send transfer request.&quot; &lt;&lt; endl;
+        close(peer_sock);
+        return;
+    }
+
+    cout &lt;&lt; &quot;Transfer request sent to &quot; &lt;&lt; recipient &lt;&lt; endl;
+    close(peer_sock);  // Close P2P connection after sending
+
+    // Update local balance (deduct the transferred amount)
+    account_balance -= amount;
+    cout &lt;&lt; &quot;\nTransfer completed. Your new balance: $&quot; &lt;&lt; account_balance &lt;&lt; endl;
+
+    // Wait for recipient to process
+    this_thread::sleep_for(chrono::milliseconds(500));
+    
+    // Optionally request updated info from server
+    cout &lt;&lt; &quot;\nRequesting updated list from server...&quot; &lt;&lt; endl;
+    string list_msg = &quot;List&quot;;
+    if (send_message(server_socket, list_msg)) {
+        string response = receive_message(server_socket);
+        if (!response.empty()) {
+            parse_online_list(response);
+            cout &lt;&lt; &quot;Balance updated after transfer.&quot; &lt;&lt; endl;
+        } else {
+            cout &lt;&lt; &quot;Warning: Could not retrieve updated balance from server.&quot; &lt;&lt; endl;
+        }
+    } else {
+        cout &lt;&lt; &quot;Warning: Failed to send list request to server.&quot; &lt;&lt; endl;
+    }
+}</code></pre><ul id="2ab35bf5-e68e-8035-9333-fca19c0cd2ee" class="bulleted-list"><li style="list-style-type:disc">功能：實現使用者之間的 P2P 轉帳操作。</li></ul><ul id="2ab35bf5-e68e-8014-8249-dc5cb55bec32" class="bulleted-list"><li style="list-style-type:disc">流程：<ol type="1" id="2ab35bf5-e68e-8075-b3b1-e83cbcb655ae" class="numbered-list" start="1"><li>顯示目前在線的其他使用者清單（不包含自己），請使用者輸入收款人和轉帳金額</li></ol><ol type="1" id="2ab35bf5-e68e-8045-b23e-e32e104dd684" class="numbered-list" start="2"><li>檢查收款人是否在線上，以及轉帳金額是否有效且不超過餘額</li></ol><ol type="1" id="2ab35bf5-e68e-80f5-be94-c288542dcc3e" class="numbered-list" start="3"><li>建立與收款人的 P2P 連線，發送轉帳訊息 <mark class="highlight-default"><code>&quot;sender#amount#recipient&quot;</code></mark></li></ol><ol type="1" id="2ab35bf5-e68e-80a4-bdd3-d1d1b0eef5ed" class="numbered-list" start="4"><li>立即扣除本地餘額並顯示更新後的餘額</li></ol><ol type="1" id="2ab35bf5-e68e-80f9-844b-cf2e437db01b" class="numbered-list" start="5"><li>等待收款方處理後，可選地向伺服器查詢更新後的清單以確認餘額同步</li></ol></li></ul></li></ol><ol type="1" id="2ab35bf5-e68e-80dd-bd99-cca3f02e99ac" class="numbered-list" start="6"><li><strong>離線通知 (handle_exit)</strong><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2ab35bf5-e68e-8025-940b-c49154a38fce" class="code code-wrap"><code class="language-C++" style="white-space:pre-wrap;word-break:break-all">void handle_exit() {
+    cout &lt;&lt; &quot;\n--- Exiting ---&quot; &lt;&lt; endl;
+    
+    // If logged in, send proper logout notification to server
+    if (is_logged_in &amp;&amp; server_socket != -1) {
+        cout &lt;&lt; &quot;Logging out...&quot; &lt;&lt; endl;
+        
+        // Send exit message to server
+        // NOTE: Exit command does NOT include CRLF
+        string message = &quot;Exit&quot;;
+        if (send_message(server_socket, message)) {
+            // Wait for server&#x27;s goodbye response
+            string response = receive_message(server_socket);
+            if (response.find(&quot;Bye&quot;) != string::npos) {
+                cout &lt;&lt; &quot;Logged out successfully.&quot; &lt;&lt; endl;
+            }
+        }
+    }
+    
+    // Close persistent server connection
+    if (server_socket != -1) {
+        close(server_socket);
+        server_socket = -1;
+    }
+    
+    // Mark logged out and stop the program
+    is_logged_in = false;
+    is_running = false;
+    cout &lt;&lt; &quot;Goodbye!&quot; &lt;&lt; endl;
+}</code></pre><ul id="2ab35bf5-e68e-804e-8241-c13eaded6326" class="bulleted-list"><li style="list-style-type:disc">功能：通知伺服器使用者即將離線。</li></ul><ul id="2ab35bf5-e68e-8070-815b-df2f3058f342" class="bulleted-list"><li style="list-style-type:disc">流程：<ol type="1" id="2ab35bf5-e68e-80df-980b-f2f5ad51fadd" class="numbered-list" start="1"><li>如果已登入，發送 <mark class="highlight-default"><code>&quot;Exit&quot;</code></mark> 訊息給伺服器（注意：不使用 CRLF）</li></ol><ol type="1" id="2ab35bf5-e68e-80cd-8746-d93b8b2a9b0d" class="numbered-list" start="2"><li>等待伺服器回應 <mark class="highlight-default"><code>&quot;Bye&quot;</code></mark> 確認</li></ol><ol type="1" id="2ab35bf5-e68e-8088-bdd5-e61d0da77fc3" class="numbered-list" start="3"><li>關閉所有連線（<mark class="highlight-default"><code>server_socket</code></mark> 和 <mark class="highlight-default"><code>listen_socket</code></mark>）</li></ol><ol type="1" id="2ab35bf5-e68e-8064-a914-dc9f3d7ff8c7" class="numbered-list" start="4"><li>更新狀態旗標並結束程式</li></ol></li></ul></li></ol><ol type="1" id="2ab35bf5-e68e-809f-b4cf-e6f6d777a771" class="numbered-list" start="7"><li><strong>網路通訊輔助函式</strong><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2ab35bf5-e68e-807f-83e5-d609013f61d1" class="code code-wrap"><code class="language-C++" style="white-space:pre-wrap;word-break:break-all">int connect_to_server(const string&amp; ip, int port) {
+    // Create TCP socket
+    int sock = socket(AF_INET, SOCK_STREAM, 0);
+    if (sock == -1) {
+        perror(&quot;socket&quot;);
+        return -1;
+    }
+
+    // Set up server address structure
+    struct sockaddr_in server_addr;
+    memset(&amp;server_addr, 0, sizeof(server_addr));
+    server_addr.sin_family = AF_INET;
+    server_addr.sin_port = htons(port);  // Convert port to network byte order
+    
+    // Convert IP address from string to binary form
+    if (inet_pton(AF_INET, ip.c_str(), &amp;server_addr.sin_addr) &lt;= 0) {
+        perror(&quot;inet_pton&quot;);
+        close(sock);
+        return -1;
+    }
+
+    // Connect to server
+    if (connect(sock, (struct sockaddr*)&amp;server_addr, sizeof(server_addr)) == -1) {
+        perror(&quot;connect&quot;);
+        close(sock);
+        return -1;
+    }
+
+    return sock;
+}</code></pre><ul id="2ab35bf5-e68e-80b4-966c-de2376c03297" class="bulleted-list"><li style="list-style-type:disc">功能：建立一個 TCP Socket 並連接到指定的 IP 和 port。</li></ul><ul id="2ab35bf5-e68e-801d-892e-d16c27c6053e" class="bulleted-list"><li style="list-style-type:disc">流程：<ol type="1" id="2ab35bf5-e68e-80da-8b8e-c13fa7d6c584" class="numbered-list" start="1"><li>建立 TCP socket</li></ol><ol type="1" id="2ab35bf5-e68e-802d-b927-dd06037ec5b4" class="numbered-list" start="2"><li>設定伺服器位址結構（使用 <mark class="highlight-default"><code>sockaddr_in</code></mark>）</li></ol><ol type="1" id="2ab35bf5-e68e-8034-8a81-e860a4469872" class="numbered-list" start="3"><li>將 port 轉換為網路位元組順序（使用 <mark class="highlight-default"><code>htons</code></mark>）</li></ol><ol type="1" id="2ab35bf5-e68e-806c-ae69-da5401ccf409" class="numbered-list" start="4"><li>將 IP 位址從字串轉換為二進位形式（使用 <mark class="highlight-default"><code>inet_pton</code></mark>）</li></ol><ol type="1" id="2ab35bf5-e68e-80fb-9bd7-eba76767be8d" class="numbered-list" start="5"><li>連接到伺服器（使用 <mark class="highlight-default"><code>connect</code></mark>）</li></ol></li></ul><ul id="2ab35bf5-e68e-80b3-85f0-c26a796c5156" class="bulleted-list"><li style="list-style-type:disc">成功時回傳 socket 描述符，失敗時回傳 <mark class="highlight-default"><code>-1</code></mark>。</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2ab35bf5-e68e-8031-aeec-e02340ad2a01" class="code code-wrap"><code class="language-C++" style="white-space:pre-wrap;word-break:break-all">bool send_message(int sock, const string&amp; message) {
+    ssize_t sent = send(sock, message.c_str(), message.length(), 0);
+    if (sent == -1) {
+        perror(&quot;send&quot;);
+        return false;
+    }
+    return true;
+}</code></pre><ul id="2ab35bf5-e68e-809d-9129-dd793b5c796a" class="bulleted-list"><li style="list-style-type:disc">功能：透過指定的 socket 發送訊息。</li></ul><ul id="2ab35bf5-e68e-800d-bde9-f447d3a2c400" class="bulleted-list"><li style="list-style-type:disc">流程：<ol type="1" id="2ab35bf5-e68e-8011-8941-f03c6e51102b" class="numbered-list" start="1"><li>使用 <mark class="highlight-default"><code>send</code></mark> 函式發送訊息</li></ol><ol type="1" id="2ab35bf5-e68e-80ab-bd3c-e37c891c5be6" class="numbered-list" start="2"><li>檢查是否發送成功</li></ol></li></ul><ul id="2ab35bf5-e68e-80ca-a9f0-d340c9f410c3" class="bulleted-list"><li style="list-style-type:disc">回傳值：成功時回傳 <mark class="highlight-default"><code>true</code></mark>，失敗時回傳 <mark class="highlight-default"><code>false</code></mark>。</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2ab35bf5-e68e-80a9-a111-e73b573ffcf4" class="code code-wrap"><code class="language-C++" style="white-space:pre-wrap;word-break:break-all">string receive_message(int sock) {
+    char buffer[BUFFER_SIZE];
+    memset(buffer, 0, BUFFER_SIZE);
+    
+    ssize_t received = recv(sock, buffer, BUFFER_SIZE - 1, 0);
+    
+    if (received == -1) {
+        perror(&quot;recv&quot;);
+        return &quot;&quot;;
+    } else if (received == 0) {
+        // Connection closed by peer
+        return &quot;&quot;;
+    }
+    
+    return string(buffer, received);
+}</code></pre><ul id="2ab35bf5-e68e-8037-b115-c933dbeac961" class="bulleted-list"><li style="list-style-type:disc">功能：從指定的 socket 接收訊息。</li></ul><ul id="2ab35bf5-e68e-804b-b145-eb5c7bb4b991" class="bulleted-list"><li style="list-style-type:disc">流程：<ol type="1" id="2ab35bf5-e68e-80d7-a00c-d6f502d221ad" class="numbered-list" start="1"><li>建立緩衝區並初始化為零</li></ol><ol type="1" id="2ab35bf5-e68e-800c-8844-fff063606832" class="numbered-list" start="2"><li>使用 `recv` 函式接收資料</li></ol><ol type="1" id="2ab35bf5-e68e-8076-a387-eca496900ba9" class="numbered-list" start="3"><li>檢查接收結果：<mark class="highlight-default"><code>-1</code></mark> 表示錯誤、<mark class="highlight-default"><code>0</code></mark> 表示連線已關閉、其他值表示成功接收</li></ol></li></ul><ul id="2ab35bf5-e68e-80bb-ae92-f10055fcabc0" class="bulleted-list"><li style="list-style-type:disc">成功時回傳接收到的訊息字串，失敗時回傳空字串。</li></ul></li></ol><ol type="1" id="2ab35bf5-e68e-80f8-8cef-e4db8d06418f" class="numbered-list" start="8"><li><strong>監聽執行緒 (listener_thread)</strong><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2ab35bf5-e68e-80e5-b55e-ebb342e1cb0a" class="code code-wrap"><code class="language-C++" style="white-space:pre-wrap;word-break:break-all">void listener_thread() {
+    // Create listening socket
+    listen_socket = socket(AF_INET, SOCK_STREAM, 0);
+    if (listen_socket == -1) {
+        perror(&quot;listener socket&quot;);
+        return;
+    }
+
+    // Set socket option to reuse address (useful for quick restart)
+    int opt = 1;
+    if (setsockopt(listen_socket, SOL_SOCKET, SO_REUSEADDR, &amp;opt, sizeof(opt)) == -1) {
+        perror(&quot;setsockopt&quot;);
+        close(listen_socket);
+        return;
+    }
+
+    // Bind socket to our listening port
+    struct sockaddr_in listen_addr;
+    memset(&amp;listen_addr, 0, sizeof(listen_addr));
+    listen_addr.sin_family = AF_INET;
+    listen_addr.sin_addr.s_addr = INADDR_ANY;  // Listen on all network interfaces
+    listen_addr.sin_port = htons(my_port);     // Convert port to network byte order
+
+    if (::bind(listen_socket, (struct sockaddr*)&amp;listen_addr, sizeof(listen_addr)) == -1) {
+        perror(&quot;bind&quot;);
+        close(listen_socket);
+        return;
+    }
+
+    // Start listening for connections (queue up to 5 pending connections)
+    if (listen(listen_socket, 5) == -1) {
+        perror(&quot;listen&quot;);
+        close(listen_socket);
+        return;
+    }
+
+    safe_print(&quot;P2P listener started on port &quot; + to_string(my_port));
+
+    // Accept incoming connections in a loop
+    while (is_running) {
+        struct sockaddr_in client_addr;
+        socklen_t client_len = sizeof(client_addr);
+        
+        // Accept incoming connection (blocking call)
+        int client_sock = accept(listen_socket, (struct sockaddr*)&amp;client_addr, &amp;client_len);
+        if (client_sock == -1) {
+            if (is_running) {
+                perror(&quot;accept&quot;);
+            }
+            continue;
+        }
+
+        // Handle this client connection in a new thread
+        thread handler(handle_client_connection, client_sock);
+        handler.detach();  // Detach so handler runs independently
+    }
+}</code></pre><ul id="2ab35bf5-e68e-80ed-b2cd-c9ce1485ef94" class="bulleted-list"><li style="list-style-type:disc">功能：在背景持續執行的監聽執行緒，用於接收其他使用者的 P2P 轉帳請求。</li></ul><ul id="2ab35bf5-e68e-8069-906c-ca8c66e97d3f" class="bulleted-list"><li style="list-style-type:disc">流程：<ol type="1" id="2ab35bf5-e68e-80c1-8db1-c66d91cd4843" class="numbered-list" start="1"><li>建立監聽 Socket</li></ol><ol type="1" id="2ab35bf5-e68e-8074-aa22-ceb23ffb6abf" class="numbered-list" start="2"><li>設定 Socket 選項 <mark class="highlight-default"><code>SO_REUSEADDR</code></mark>，以便快速重啟 Socket</li></ol><ol type="1" id="2ab35bf5-e68e-801b-9504-fed92ddfa1d1" class="numbered-list" start="3"><li>綁定 Socket 到使用者指定的 port（<mark class="highlight-default"><code>my_port</code></mark>）</li></ol><ol type="1" id="2ab35bf5-e68e-80dc-9cf4-dee8c5155dbb" class="numbered-list" start="4"><li>開始監聽連線（最多佇列 5 個待處理連線）</li></ol><ol type="1" id="2ab35bf5-e68e-80a2-af01-d17b615d78f3" class="numbered-list" start="5"><li>在迴圈中接受連線請求（使用 <mark class="highlight-default"><code>accept</code></mark>，這是阻塞呼叫）</li></ol><ol type="1" id="2ab35bf5-e68e-80dd-8039-fd900a5ea9b4" class="numbered-list" start="6"><li>對每個接受的連線，建立一個新的處理執行緒來處理轉帳訊息</li></ol></li></ul></li></ol><ol type="1" id="2ab35bf5-e68e-8081-8da2-f4f417271343" class="numbered-list" start="9"><li><strong>處理客戶端連線 (handle_client_connection)</strong><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2ab35bf5-e68e-805a-a96d-ed46d4bc6f3e" class="code code-wrap"><code class="language-C++" style="white-space:pre-wrap;word-break:break-all">void handle_client_connection(int client_sock) {
+    // Receive transfer message from peer
+    string message = receive_message(client_sock);
+    
+    if (message.empty()) {
+        safe_print(&quot;[ERROR] Empty P2P message received&quot;);
+        close(client_sock);
+        return;
+    }
+
+    // Parse transfer message: sender#amount#recipient
+    size_t pos1 = message.find(&#x27;#&#x27;);
+    size_t pos2 = message.find(&#x27;#&#x27;, pos1 + 1);
+    
+    if (pos1 != string::npos &amp;&amp; pos2 != string::npos) {
+        string sender = message.substr(0, pos1);
+        string amount_str = message.substr(pos1 + 1, pos2 - pos1 - 1);
+        string recipient = message.substr(pos2 + 1);
+        
+        // Remove CRLF from recipient field
+        recipient.erase(std::remove(recipient.begin(), recipient.end(), &#x27;\r&#x27;), recipient.end());
+        recipient.erase(std::remove(recipient.begin(), recipient.end(), &#x27;\n&#x27;), recipient.end());
+        
+        int amount = stoi(amount_str);
+        
+        // Display transfer notification to user
+        safe_print(&quot;\n*** Incoming Transfer ***&quot;);
+        safe_print(&quot;From: &quot; + sender);
+        safe_print(&quot;Amount: $&quot; + to_string(amount));
+        safe_print(&quot;To: &quot; + recipient);
+        safe_print(&quot;************************\n&quot;);
+        
+        // Update local balance (optimistic update)
+        account_balance += amount;
+        safe_print(&quot;Transfer received. New balance: $&quot; + to_string(account_balance));
+        
+        // Report transaction to server so it can update both accounts
+        if (is_logged_in &amp;&amp; server_socket != -1) {
+            socket_mutex.lock();  // Lock because main thread may also use server_socket
+            
+            // Format: sender#amount#recipient\r\n
+            string transaction_msg = sender + &quot;#&quot; + amount_str + &quot;#&quot; + recipient + CRLF;
+            
+            if (send_message(server_socket, transaction_msg)) {
+                string response = receive_message(server_socket);
+                if (!response.empty()) {
+                    safe_print(&quot;[DEBUG] Server response: &#x27;&quot; + response + &quot;&#x27;&quot;);
+                }
+                safe_print(&quot;Transaction reported to server.&quot;);
+            } else {
+                safe_print(&quot;[WARNING] Failed to report transaction to server&quot;);
+            }
+            
+            socket_mutex.unlock();
+        } else {
+            safe_print(&quot;Warning: Not logged in, transaction not reported to server&quot;);
+        }
+    } else {
+        safe_print(&quot;[ERROR] Failed to parse P2P transfer message. Invalid format.&quot;);
+    }
+    
+    // Close P2P connection
+    close(client_sock);
+}</code></pre><ul id="2ab35bf5-e68e-80cb-ad3e-ddfc1a5a92e9" class="bulleted-list"><li style="list-style-type:disc">功能：處理來自其他客戶端的 P2P 轉帳請求。</li></ul><ul id="2ab35bf5-e68e-801c-9c9e-c620a42c69b0" class="bulleted-list"><li style="list-style-type:disc">流程：<ol type="1" id="2ab35bf5-e68e-80a2-b064-ca0e4f6c83f6" class="numbered-list" start="1"><li>接收轉帳訊息，解析訊息格式 <mark class="highlight-default"><code>&quot;sender#amount#recipient&quot;</code></mark>，移除可能的 CRLF 字元</li></ol><ol type="1" id="2ab35bf5-e68e-80c3-87a1-f637b2c1fc0b" class="numbered-list" start="2"><li>顯示轉帳通知給使用者、立即增加本地餘額（樂觀更新）</li></ol><ol type="1" id="2ab35bf5-e68e-807d-a98e-e21e05f6f5cf" class="numbered-list" start="3"><li>向伺服器報告交易（格式：<mark class="highlight-default"><code>sender#amount#recipient\r\n</code></mark>），讓伺服器更新雙方帳戶餘額</li></ol><ol type="1" id="2ab35bf5-e68e-8017-8eec-d7ed12d8e66f" class="numbered-list" start="4"><li>關閉 P2P 連</li></ol></li></ul></li></ol><ol type="1" id="2ab35bf5-e68e-8071-8883-c384d5116e1f" class="numbered-list" start="10"><li><strong>執行緒安全輸出 (safe_print)</strong><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2ab35bf5-e68e-80ea-a35c-c47eab5ad3cd" class="code code-wrap"><code class="language-C++" style="white-space:pre-wrap;word-break:break-all">void safe_print(const string&amp; message) {
+    lock_guard&lt;mutex&gt; lock(cout_mutex);
+    cout &lt;&lt; message &lt;&lt; endl;
+}</code></pre><ul id="2ab35bf5-e68e-8096-b61f-d7ca8f11d219" class="bulleted-list"><li style="list-style-type:disc">功能：執行緒安全的輸出函式，使用 mutex 防止輸出混亂。</li></ul><ul id="2ab35bf5-e68e-8068-ac74-db64f29c8b88" class="bulleted-list"><li style="list-style-type:disc">流程：<ol type="1" id="2ab35bf5-e68e-80f5-b163-ceed967d3442" class="numbered-list" start="1"><li>使用 <mark class="highlight-default"><code>lock_guard</code></mark> 自動鎖定 <mark class="highlight-default"><code>cout_mutex</code></mark></li></ol><ol type="1" id="2ab35bf5-e68e-8004-bf5d-fbace61ca5ab" class="numbered-list" start="2"><li>輸出訊息</li></ol><ol type="1" id="2ab35bf5-e68e-804e-87dc-d4876b33bffb" class="numbered-list" start="3"><li><mark class="highlight-default"><code>lock_guard</code></mark> 在函式結束時自動解鎖</li></ol></li></ul><ul id="2ab35bf5-e68e-8038-b09d-d1213aef0d01" class="bulleted-list"><li style="list-style-type:disc">所有執行緒（主執行緒、監聽執行緒、處理執行緒）都使用此函式來輸出訊息。</li></ul></li></ol><h3 id="2ab35bf5-e68e-80e0-93bf-fa7139398351" class="">main function</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2ab35bf5-e68e-8034-9bfe-c9a8d604aeb7" class="code code-wrap"><code class="language-C++" style="white-space:pre-wrap;word-break:break-all">int main() {   
+    cout &lt;&lt; &quot;========================================&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;   P2P Micropayment System - Client    &quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;========================================&quot; &lt;&lt; endl;
+    cout &lt;&lt; endl;
+
+    // Get server connection information from user
+    cout &lt;&lt; &quot;Enter Server IP address: &quot;;
+    getline(cin, server_ip);
+    
+    cout &lt;&lt; &quot;Enter Server Port: &quot;;
+    string port_str;
+    getline(cin, port_str);
+    server_port = stoi(port_str);
+ 
+    // Get our listening port for accepting P2P connections
+    cout &lt;&lt; &quot;Enter your listening port for P2P connections: &quot;;
+    getline(cin, port_str);
+    my_port = stoi(port_str);
+
+    // Establish persistent connection to server at startup
+    cout &lt;&lt; &quot;\nConnecting to server...&quot; &lt;&lt; endl;
+    server_socket = connect_to_server(server_ip, server_port);
+    if (server_socket == -1) {
+        cout &lt;&lt; &quot;Failed to connect to server. Exiting.&quot; &lt;&lt; endl;
+        return 1;
+    }
+    cout &lt;&lt; &quot;Connected to server successfully!&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;You can now Register (if new user) or Login (if existing user).&quot; &lt;&lt; endl;
+
+    // Start listener thread for P2P connections in background
+    thread listener(listener_thread);
+    listener.detach();  // Detach so it runs independently
+
+    // Give listener thread time to initialize and start listening
+    this_thread::sleep_for(chrono::milliseconds(500));
+
+    // Main menu loop - continues until user chooses to exit
+    while (is_running) {
+        print_menu();
+        
+        string choice;
+        cout &lt;&lt; &quot;\nEnter your choice: &quot;;
+        getline(cin, choice);
+
+        // Dispatch to appropriate handler based on user choice
+        if (choice == &quot;1&quot;) {
+            handle_register();
+        } else if (choice == &quot;2&quot;) {
+            handle_login();
+        } else if (choice == &quot;3&quot;) {
+            handle_list();
+        } else if (choice == &quot;4&quot;) {
+            handle_transfer();
+        } else if (choice == &quot;5&quot;) {
+            handle_exit();
+        } else {
+            cout &lt;&lt; &quot;Invalid choice. Please try again.&quot; &lt;&lt; endl;
+        }
+    }
+
+    // Cleanup: close all sockets before exiting
+    if (server_socket != -1) {
+        close(server_socket);
+    }
+    if (listen_socket != -1) {
+        close(listen_socket);
+    }
+
+    return 0;
+}</code></pre><ul id="2ab35bf5-e68e-80d5-989b-d9039968de2a" class="bulleted-list"><li style="list-style-type:disc">功能：程式的入口點，提供使用者介面並根據使用者選擇執行相應功能。</li></ul><ul id="2ab35bf5-e68e-8023-9244-fc497f64a752" class="bulleted-list"><li style="list-style-type:disc">流程：<ol type="1" id="2ab35bf5-e68e-801d-a897-dfeca6a44062" class="numbered-list" start="1"><li>初始化：<ul id="2ab35bf5-e68e-8099-9011-facd1dbef0ef" class="bulleted-list"><li style="list-style-type:disc">顯示程式標題</li></ul><ul id="2ab35bf5-e68e-803f-a753-ec7c2d622dfb" class="bulleted-list"><li style="list-style-type:disc">要求使用者輸入伺服器的 IP 位址和 port number、自己的 P2P 監聽 port</li></ul><ul id="2ab35bf5-e68e-8040-90d4-f4b111c52184" class="bulleted-list"><li style="list-style-type:disc">建立與伺服器的持久連線啟動監聽執行緒來接收其他客戶端的轉帳請求</li></ul></li></ol><ol type="1" id="2ab35bf5-e68e-80d4-bcb9-ea69413a64bb" class="numbered-list" start="2"><li>主迴圈：<ul id="2ab35bf5-e68e-80f6-8a01-e21a13a5ea23" class="bulleted-list"><li style="list-style-type:disc">顯示選單並接收使用者選擇</li></ul><ul id="2ab35bf5-e68e-8042-87de-e522c07cec64" class="bulleted-list"><li style="list-style-type:disc">根據選擇執行操作</li></ul></li></ol><ol type="1" id="2ab35bf5-e68e-80e2-966d-c9634e0ced1c" class="numbered-list" start="3"><li>清理：在退出前關閉所有 Socket 連線（<mark class="highlight-default"><code>server_socket</code></mark> 和 <mark class="highlight-default"><code>listen_socket</code></mark>）</li></ol></li></ul><ul id="2ab35bf5-e68e-80dd-870b-eadfbda7b8fe" class="bulleted-list"><li style="list-style-type:disc">使用持久連線模式，所有操作都使用同一個 <mark class="highlight-default"><code>server_socket</code></mark></li></ul><ul id="2ab35bf5-e68e-8032-9d1e-f7a2b2577ed1" class="bulleted-list"><li style="list-style-type:disc">使用多執行緒架構，監聽執行緒在背景持續執行</li></ul><ul id="2ab35bf5-e68e-8048-8569-c91ca6dd7f26" class="bulleted-list"><li style="list-style-type:disc">使用 <mark class="highlight-default"><code>is_running</code></mark> 旗標控制程式執行，確保優雅地結束</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

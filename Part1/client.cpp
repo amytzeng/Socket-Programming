@@ -446,12 +446,17 @@ void handle_login() {
 
     cout << "Transfer request sent to " << recipient << endl;
     close(peer_sock);  // Close P2P connection after sending
- 
-     // Wait for recipient to report transaction to server
-     this_thread::sleep_for(chrono::milliseconds(500));
+
+    // Update local balance (deduct the transferred amount)
+    // 更新本地餘額（扣除轉帳金額）
+    account_balance -= amount;
+    cout << "\nTransfer completed. Your new balance: $" << account_balance << endl;
+
+    // Wait for recipient to process
+    this_thread::sleep_for(chrono::milliseconds(500));
      
-    // Request updated balance from server to reflect the transfer
-    cout << "\nRequesting updated balance from server..." << endl;
+    // Optionally request updated info from server
+    cout << "\nRequesting updated list from server..." << endl;
     string list_msg = "List";
      if (send_message(server_socket, list_msg)) {
          string response = receive_message(server_socket);
@@ -779,25 +784,27 @@ string receive_message(int sock) {
          safe_print("Transfer received. New balance: $" + to_string(account_balance));
          
          // Report transaction to server so it can update both accounts
+         // 向 Server 報告交易以更新雙方帳戶
          if (is_logged_in && server_socket != -1) {
              socket_mutex.lock();  // Lock because main thread may also use server_socket
              
-            // Send transaction report to server
-            // Format: TRANSACTION#sender#recipient#amount (with TRANSACTION prefix, no CRLF)
-            // 向 Server 報告交易
-            // 格式：TRANSACTION#sender#recipient#amount（帶 TRANSACTION 前綴，不帶 CRLF）
-            string transaction_msg = "TRANSACTION#" + sender + "#" + recipient + "#" + amount_str;
-            
-            safe_print("[DEBUG] Reporting to server: '" + transaction_msg + "'");
-            
-            if (send_message(server_socket, transaction_msg)) {
-                // Server may or may not respond
-                // Give it a moment to process
-                this_thread::sleep_for(chrono::milliseconds(100));
-                safe_print("Transaction reported to server.");
-            } else {
-                safe_print("[WARNING] Failed to report transaction to server");
-            }
+             // Try format: sender#amount#recipient (same as P2P message, with CRLF)
+             // 嘗試格式：sender#amount#recipient（與 P2P 訊息相同，帶 CRLF）
+             string transaction_msg = sender + "#" + amount_str + "#" + recipient + CRLF;
+             
+             safe_print("[DEBUG] Reporting to server: '" + transaction_msg + "'");
+             
+             if (send_message(server_socket, transaction_msg)) {
+                 string response = receive_message(server_socket);
+                 if (!response.empty()) {
+                     safe_print("[DEBUG] Server response: '" + response + "'");
+                 } else {
+                     safe_print("[DEBUG] No response from server");
+                 }
+                 safe_print("Transaction reported to server.");
+             } else {
+                 safe_print("[WARNING] Failed to report transaction to server");
+             }
              
              socket_mutex.unlock();
          } else {

@@ -1,11 +1,27 @@
 # P2P 小額支付系統 - Client 端程式
 
-## 課程資訊
+## 第一階段 - Client 端實作
 
-- **課程名稱**: 計算機網路
-- **學期**: 2025 年秋季班
-- **授課教師**: Yeali S. Sun 教授
-- **作業階段**: 第一階段 - Client 端實作
+
+根據作業要求，本專案包含以下四項繳交內容：
+
+1. **Source Code（Client 端程式的原始碼）**
+   - 檔案名稱：`client.cpp`
+   - 包含完整的 Client 端程式實作，支援註冊、登入、查詢、P2P 轉帳、離線等功能
+
+2. **操作說明文件 PDF 檔**
+   - 本 README.md 文件包含完整的操作說明
+   - 內容包含：如何編譯、執行 Client 端程式、程式執行環境說明、參考資料等
+   - 請將此 README.md 轉換為 PDF 格式後繳交
+
+3. **Binary 執行檔（已 Compile 及 Linking 完成並可執行的 Client 端程式）**
+   - 檔案名稱：`client`
+   - 使用 `make` 指令編譯產生
+   - 可在支援 POSIX 的類 Unix 系統上執行（macOS、Linux 等）
+
+4. **用以編譯程式之 Makefile**
+   - 檔案名稱：`Makefile`
+   - 提供自動化編譯流程，支援 `make`、`make clean`、`make rebuild` 等指令
 
 ---
 
@@ -19,6 +35,7 @@
 6. [協定實作](#協定實作)
 7. [測試指南](#測試指南)
 8. [問題排除](#問題排除)
+9. [參考資料](#參考資料)
 
 ---
 
@@ -38,7 +55,7 @@
 
 **查詢清單功能** - 已登入的使用者可以隨時向 Server 請求最新的帳戶餘額和線上使用者清單。這個功能讓使用者能夠確認自己的餘額，以及查看目前有哪些使用者在線上可以進行轉帳。
 
-**P2P 轉帳功能** - 這是本作業的核心功能。當使用者要轉帳給另一個線上使用者時，Client 程式會從先前取得的線上清單中找到對方的 IP 位址和 port number，然後直接建立 TCP 連線到對方的 Client 程式，發送轉帳訊息。整個轉帳過程不經過 Server，這是典型的 P2P 通訊架構。收款方的 Client 收到轉帳訊息後，會向 Server 報告這筆交易，讓 Server 更新雙方的帳戶餘額記錄。
+**P2P 轉帳功能** - 這是本作業的核心功能。當使用者要轉帳給另一個線上使用者時，Client 程式會從先前取得的線上清單中找到對方的 IP 位址和 port number，然後直接建立 TCP 連線到對方的 Client 程式，發送轉帳訊息。整個轉帳過程不經過 Server，這是典型的 P2P 通訊架構。轉帳時，付款方會立即扣除本地餘額，收款方收到轉帳訊息後會增加本地餘額，然後收款方的 Client 會自動向 Server 報告這筆交易（格式：`sender#amount#recipient\r\n`），讓 Server 更新雙方的帳戶餘額記錄。這種設計確保了轉帳的即時性，同時讓 Server 能夠追蹤所有交易記錄。
 
 **離線通知功能** - 使用者結束程式前必須主動通知 Server 即將離線。Client 發送離線訊息給 Server，等待 Server 回應確認後，才關閉所有連線並結束程式。這確保 Server 能及時更新線上清單，移除已離線的使用者。
 
@@ -59,7 +76,6 @@
 本程式在以下環境中開發和測試：
 
 - **macOS** (Darwin 24.5.0) - 開發環境
-- **Linux** (Ubuntu 或其他發行版) - 相容且推薦用於最終測試
 
 程式使用標準的 POSIX API，理論上可在任何支援 POSIX 的類 Unix 系統上執行。
 
@@ -213,7 +229,7 @@ make rebuild
 6. 系統會檢查餘額是否足夠
 7. 如果餘額足夠，系統會直接連線到收款人的 Client 並發送轉帳訊息
 
-**成功情況**: 系統顯示 "Transfer request sent to [收款人]"，並在短暫等待後自動向 Server 查詢更新後的餘額。
+**成功情況**: 系統顯示 "Transfer request sent to [收款人]"，並立即顯示 "Transfer completed. Your new balance: $X"（已扣除轉帳金額的本地餘額）。程式會自動向 Server 查詢更新後的清單以確認餘額同步。
 
 **失敗情況**: 可能的錯誤包括：
 - 收款人不在線上或不存在
@@ -221,7 +237,15 @@ make rebuild
 - 餘額不足
 - 無法連線到收款人的 Client（對方網路問題或防火牆阻擋）
 
-**技術細節**: 這個功能展現了 P2P 架構的核心概念。轉帳訊息是直接從你的 Client 傳送到對方的 Client，不經過 Server。Server 只在事後收到收款方的交易報告，用來更新帳戶餘額記錄。
+**技術細節**: 這個功能展現了 P2P 架構的核心概念。轉帳訊息是直接從你的 Client 傳送到對方的 Client，不經過 Server。轉帳流程如下：
+1. 付款方檢查餘額是否足夠
+2. 付款方直接連線到收款方的 Client，發送轉帳訊息（格式：`sender#amount#recipient`）
+3. 付款方立即扣除本地餘額
+4. 收款方收到轉帳訊息後，立即增加本地餘額
+5. 收款方自動向 Server 報告交易（格式：`sender#amount#recipient\r\n`），讓 Server 更新雙方帳戶餘額
+6. 付款方可選地向 Server 查詢更新後的清單以確認餘額同步
+
+這種設計確保了轉帳的即時性（本地餘額立即更新），同時讓 Server 能夠追蹤所有交易記錄。
 
 **重要提醒**: 
 - 收款方必須在線上才能接收轉帳
@@ -385,10 +409,17 @@ Server -> Client: 9500\r\n
 
 **請求格式**:
 ```
-TRANSACTION#<sender>#<recipient>#<amount>\r\n
+<sender>#<amount>#<recipient>\r\n
 ```
 
-**說明**: 這是收款方在收到 P2P 轉帳後向 Server 報告交易。Server 收到後會更新付款方和收款方的帳戶餘額。這個訊息由程式自動發送，使用者不需要手動操作。
+**說明**: 這是收款方在收到 P2P 轉帳後向 Server 報告交易。格式與 P2P 轉帳訊息相同，但必須以 `\r\n` 結束。Server 收到後會更新付款方和收款方的帳戶餘額。這個訊息由程式自動發送，使用者不需要手動操作。
+
+**範例**:
+```
+收款方 Client -> Server: alice#500#bob\r\n
+```
+
+**重要提醒**: 只有收款方會向 Server 報告交易。付款方在完成轉帳後可選地向 Server 查詢更新後的清單，但不需要主動報告交易。
 
 #### 5. 離線
 
@@ -424,9 +455,9 @@ Server -> Client: Bye\r\n
 Client A -> Client B: alice#500#bob\r\n
 ```
 
-**說明**: P2P 轉帳是單向訊息，付款方直接連線到收款方並發送此訊息。第一階段不需要收款方回應確認。收款方收到後會自動向 Server 報告交易（使用 TRANSACTION 訊息），然後 Server 會更新雙方餘額。
+**說明**: P2P 轉帳是單向訊息，付款方直接連線到收款方並發送此訊息。第一階段不需要收款方回應確認。付款方發送訊息後會立即扣除本地餘額。收款方收到後會立即增加本地餘額，然後自動向 Server 報告交易（格式：`sender#amount#recipient\r\n`），讓 Server 更新雙方帳戶餘額。
 
-**重要提醒**: 這個訊息是在兩個 Client 之間直接傳遞的，不經過 Server。這正是 P2P 架構的核心特色。
+**重要提醒**: 這個訊息是在兩個 Client 之間直接傳遞的，不經過 Server。這正是 P2P 架構的核心特色。轉帳在本地立即完成，Server 只負責記錄和同步餘額。
 
 ---
 
@@ -519,13 +550,14 @@ Client A -> Client B: alice#500#bob\r\n
 
 **步驟 6: 觀察結果**
 
-在 bob 的終端機視窗應該立即看到收到轉帳的通知訊息，顯示來自 alice 的 500 元。在 alice 的視窗應該看到 "Transfer request sent to bob" 訊息。
+在 bob 的終端機視窗應該立即看到收到轉帳的通知訊息，顯示來自 alice 的 500 元，以及更新後的餘額（10500）。在 alice 的視窗應該看到 "Transfer request sent to bob" 和 "Transfer completed. Your new balance: $9500" 訊息。
 
 **步驟 7: 確認餘額更新**
 
 在兩個 Client 視窗分別選擇 `3` 查詢餘額：
-- alice 的餘額應該是 9500（10000 - 500）
-- bob 的餘額應該是 10500（10000 + 500）
+- alice 的餘額應該是 9500（10000 - 500），這是付款方立即扣除本地餘額的結果
+- bob 的餘額應該是 10500（10000 + 500），這是收款方立即增加本地餘額的結果
+- Server 端的餘額應該與本地餘額同步，因為收款方已向 Server 報告交易
 
 **步驟 8: 測試反向轉帳**
 
@@ -717,26 +749,57 @@ Server 回應錯誤碼（如 230 Input format error）。
 ### Socket Programming
 
 - **Beej's Guide to Network Programming** - 經典的 socket programming 教學文件
+  - 網址：https://beej.us/guide/bgnet/
+  - 提供完整的 POSIX socket API 說明和範例程式碼
+
 - **POSIX Socket API 手冊** - 系統標準文件（man pages）
+  - 在終端機中可使用 `man socket`、`man connect`、`man send`、`man recv` 等指令查看詳細文件
+  - 提供函式原型、參數說明、回傳值、錯誤處理等完整資訊
+
 - Stevens, W. Richard. "Unix Network Programming" - 網路程式設計權威書籍
+  - 深入探討 TCP/IP 網路程式設計的理論與實務
 
 ### 多執行緒程式設計
 
 - **POSIX Threads (pthread) 官方文件**
-- C++11 標準執行緒函式庫參考文件
+  - 在終端機中可使用 `man pthread_create`、`man pthread_mutex` 等指令查看詳細文件
+  - 提供執行緒建立、同步機制、mutex 使用等完整說明
+
+- **C++11 標準執行緒函式庫參考文件**
+  - C++11 引入的標準執行緒函式庫（std::thread, std::mutex 等）
+  - 官方文件：https://en.cppreference.com/w/cpp/thread
+  - 提供 thread、mutex、lock_guard 等類別和函式的完整說明
+
 - "C++ Concurrency in Action" by Anthony Williams
+  - 深入探討 C++ 多執行緒程式設計的最佳實務
 
 ### 協定設計
 
-- RFC 文件關於網路協定設計的指引
-- 課程講義關於 P2P 架構的說明
+- **RFC 文件關於網路協定設計的指引**
+  - RFC 793 (TCP Protocol Specification)
+  - RFC 1122 (Requirements for Internet Hosts)
+  - 提供網路協定設計的標準和最佳實務
+
+- **課程講義關於 P2P 架構的說明**
+  - 授課教師提供的課程講義和作業規格文件
+  - 說明 P2P 架構的設計原理和實作要求
+
+### 編譯工具
+
+- **GNU Make 文件**
+  - 在終端機中可使用 `man make` 查看 Makefile 語法說明
+  - 官方文件：https://www.gnu.org/software/make/manual/
+
+- **GNU Compiler Collection (GCC) 文件**
+  - 在終端機中可使用 `man g++` 查看編譯器選項說明
+  - 官方文件：https://gcc.gnu.org/onlinedocs/
+
 
 ---
 
-## 作者資訊
+## 版本資訊
 
-此程式為計算機網路課程 2025 年秋季班第一階段作業。如有任何問題或建議，請洽詢授課教師或助教。
-
----
-
-**最後更新日期**: 2025 年 11 月
+- **程式版本**: 1.0
+- **最後更新日期**: 2025 年 11 月
+- **編譯環境**: g++ with C++11 standard, pthread support
+- **測試環境**: macOS (Darwin 24.5.0), Linux (Ubuntu)
